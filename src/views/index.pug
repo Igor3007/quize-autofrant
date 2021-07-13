@@ -1,0 +1,147 @@
+extends layouts/index
+block variables
+  include ../data/data.pug
+
+
+
+block header
+
+
+block content
+
+  mixin select-custom(option)
+    select(name='' onchange='' onclick='return false;' id='')
+      each item in option
+        option(value='')= item
+
+  mixin pane-nav()
+    .pane-nav
+      .pane-nav__prev: button.btn.btn-back(data-quiz-nav="prev")
+      .pane-nav__next: button.btn.btn-arrow(data-quiz-nav="next") далее
+
+  mixin item-present(data)
+    .afq-item-present
+      .afq-item-present__lock: +bgimage('/img/common/locked.svg')
+      .afq-item-present__text= data.text
+      .afq-item-present__image: +bgimage(data.image)
+
+  mixin question-pane-select(data)
+    .afq-pane
+      .afq-pane__page Вопрос <span data-quiz-count="current">1</span> из <span data-quiz-count="total">5</span>
+      .afq-pane__title= data.title
+      .afq-pane__desc= data.desc
+      .afq-pane__main
+        .afq-pane__form
+          .afq-pane__select
+            +select-custom([
+              'Выберите марку авто',
+              'Выберите марку авто',
+              'Выберите марку авто',
+            ])
+          .afq-pane__nav: +pane-nav()
+        .afq-pane__image: +bgimage(data.image)
+
+  mixin question-pane-radio(data)
+    .afq-pane
+      .afq-pane__page Вопрос <span data-quiz-count="current">1</span> из <span data-quiz-count="total">5</span>
+      .afq-pane__title= data.title
+      .afq-pane__desc= data.desc
+      .afq-pane__main
+        .afq-pane__form
+          .afq-pane__radio
+            each item in data.quest
+              label.afq-radio
+                input(type="radio" name="type")
+                span.afq-radio__elem
+                span.afq-radio__text= item
+          .afq-pane__nav: +pane-nav()
+        .afq-pane__image: +bgimage(data.image)
+
+  mixin question-pane-image(data)
+    .afq-pane
+      .afq-pane__page Вопрос <span data-quiz-count="current">1</span> из <span data-quiz-count="total">5</span>
+      .afq-pane__title= data.title
+      .afq-pane__type: span Выберите один или несколько
+      .afq-pane__desc= data.desc
+      .afq-pane__main
+        .afq-pane__acc
+          each item in [1,2,3,4,5,6]
+            .afq-pane__card: +afq-pane-card()
+        .afq-pane__nav: +pane-nav()
+
+  mixin afq-pane-card()
+    .afq-pane-card
+      label
+        input(type="checkbox" name="1")
+        .afq-pane-card__wrp
+          .afq-pane-card__title Органайрер в багажник
+          .afq-pane-card__image: +bgimage('../img/common/pane2.jpg')
+          .afq-pane-card__elem
+
+
+  .af-quize
+    .af-quize__wrp
+      .af-quize__start
+        .afq-start
+          .afq-start__close close
+          .afq-start__main
+            .afq-start__left
+              .afq-start__logo: +bgimage('/img/common/logo.svg')
+              .afq-start__content 
+                .afq-start__title ПОЛУЧИТЕ 6 ФОТОГРАФИЙ И 3 ВАРИАНТА СТОИМОСТИ АВТОЧЕХЛОВ <span>ЛИЧНО ДЛЯ ВАШЕГО АВТО!</span>
+                .afq-start__desc Ответьте на 5 вопросов и получите купон на подарочную накидку на сидение + скидки от 25% до 60% на автоаксессуары!
+                .afq-start__btn: button.btn.btn-arrow получить фото и расчет
+
+              .afq-start__presrnt
+                .afq-present
+                  .afq-present__title После прохождения вы получите:
+                  .afq-present__list
+                    each item in itemPresent
+                      .afq-present__item: +item-present(item)
+
+            .afq-start__right: +bgimage('../img/common/strart-bg.jpg')
+
+      .af-quize__question
+        .afq-question
+          .afq-question__stage
+            .afq-question__pane.active: +question-pane-select({
+              'title': 'Для какой марки автомобиля нужны чехлы?',
+              'desc': 'Мы специализируемся на производстве модельных авточехлов под конкретную марку и модель автомобиля. Чехлы полностью повторяют геометрию сидений и смотрятся как перетяжка салона.',
+              'image': '../img/common/pane1.jpg',
+            })
+            .afq-question__pane: +question-pane-select({
+              'title': 'Для какой модели автомобиля необходимы чехлы?',
+              'desc': 'Выберите модель вашего автомобиля, мы пришлем фото от наших клиентов, с установленными чехлами для той же модели, что и у вас.',
+              'image': '../img/common/pane2.jpg',
+            })
+            .afq-question__pane: +question-pane-radio({
+              'title': 'Вы ищете готовые чехлы или хотите индивидуальные под заказ?',
+              'desc': 'Компания Автофрант специализируется на индивидуальных разработках чехлов под запросы клиента. Вы можете выбрать разные типы экокожи или алькантары, от эконом до эксклюзивного Italia, подобрать цвет чехла или вставок, двойные строчки по контуру, отстрочки ромбом, сотами и прочее, заказать индивидуальную вышивку и многое другое. Так же мы имеем готовые более простые решения чехлов в наличии.',
+              'image': '../img/common/pane3.jpg',
+              'quest': ['Ищу готовые','Хочу индивидуальныо под свой автомобиль на заказ', 'Рассматриваю оба варианта']
+            })
+            .afq-question__pane: +question-pane-radio({
+              'title': 'На какую стоимость чехлов ориентируетесь?',
+              'desc': 'Цена комплекта чехлов может отличаться от вида материала, различных видов отделки, сложности исполнения и тд. Например в производстве мы используем разные материалы: алькантара, экокожа трех видов (classic, premium, exlusive) Материалы отличаются производителем, толщиной, износостойкостью, тактильными и физическими свойствами. Более подробно вы можете уточнить информацию у наших менеджеров.',
+              'image': '../img/common/pane4.jpg',
+              'quest': ['до 7000 руб.','от 7000 до 10 000 руб.', 'от 10 000 до 17 000 руб.']
+            })
+            .afq-question__pane: +question-pane-image({
+              'title': 'Какие другие автоаксессуары могут быть полезны в автомобиле?',
+              'desc': 'Так же мы производим различные дополнительные аксессуары для автомобиля. Выберите наиболее полезные для вас. Мы предоставим на них скидки от 25% до 60% с бесплатной доставкой, вне зависимости от заказа!',
+
+            })
+          .afq-question__present
+            .afq-question__presentlist
+              each item in itemPresent
+                +item-present(item)
+            .afq-question__manager
+      .af-quize__form
+
+block footer
+
+
+
+block scripts
+  script(src="js/main.js?v=1.52")
+  script(src="js/vendor.js")

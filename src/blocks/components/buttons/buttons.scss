@@ -1,0 +1,119 @@
+.btn {
+
+
+    padding: 0.9em 2.6em;
+    color: #fff;
+    background: $main;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0;
+    min-width: rem(130);
+    height: rem(50);
+    font-size: rem(12);
+    font-weight: 500;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+
+    @media screen and (max-width: $w580) {
+        font-size: 13px;
+        height: 45px;
+    }
+
+    @media screen and (max-width: $w480) {
+        font-size: 13px;
+        height: 40px;
+    }
+
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &:active,
+    &:focus {
+        border: none;
+        outline: none;
+    }
+
+
+
+
+    &:disabled {
+        background-color: #9D9D9D;
+        color: #fff;
+        cursor: not-allowed;
+
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+
+    &.btn-big {
+        height: rem(50);
+        font-size: rem(15);
+        font-weight: 600;
+    }
+
+    &.btn-arrow {
+
+        justify-content: space-between;
+
+        &::after {
+            width: 1em;
+            height: 1em;
+            display: block;
+            content: '';
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("data:image/svg+xml,%3Csvg width='10' height='9' viewBox='0 0 10 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.562112 3.96583L0.546502 3.96924H7.23805L5.13447 1.86103C5.03146 1.7581 4.97496 1.61867 4.97496 1.47233C4.97496 1.32599 5.03146 1.18753 5.13447 1.08436L5.46179 0.756883C5.56471 0.653956 5.70187 0.597046 5.84813 0.597046C5.99447 0.597046 6.13171 0.65355 6.23463 0.756477L9.84057 4.36209C9.9439 4.46542 10.0004 4.60307 10 4.74949C10.0004 4.89673 9.9439 5.03445 9.84057 5.13762L6.23463 8.74356C6.13171 8.84641 5.99455 8.90299 5.84813 8.90299C5.70187 8.90299 5.56471 8.84632 5.46179 8.74356L5.13447 8.41608C5.03146 8.31331 4.97496 8.17608 4.97496 8.02974C4.97496 7.88348 5.03146 7.75348 5.13447 7.65063L7.26179 5.53063H0.554632C0.25325 5.53063 -1.90735e-06 5.27087 -1.90735e-06 4.96965V4.50648C-1.90735e-06 4.20526 0.26073 3.96583 0.562112 3.96583Z' fill='white'/%3E%3C/svg%3E%0A");
+        }
+    }
+
+    &.btn-back {
+
+        background-color: transparent;
+        border: 1px solid #646464;
+        width: rem(50);
+        min-width: rem(50);
+        padding-left: 0;
+        padding-right: 0;
+        justify-content: center;
+
+        &::after {
+            width: 1em;
+            height: 1em;
+            display: block;
+            content: '';
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: rotate(180deg);
+            background-image: url("data:image/svg+xml,%3Csvg width='10' height='9' viewBox='0 0 10 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.562112 3.96583L0.546502 3.96924H7.23805L5.13447 1.86103C5.03146 1.7581 4.97496 1.61867 4.97496 1.47233C4.97496 1.32599 5.03146 1.18753 5.13447 1.08436L5.46179 0.756883C5.56471 0.653956 5.70187 0.597046 5.84813 0.597046C5.99447 0.597046 6.13171 0.65355 6.23463 0.756477L9.84057 4.36209C9.9439 4.46542 10.0004 4.60307 10 4.74949C10.0004 4.89673 9.9439 5.03445 9.84057 5.13762L6.23463 8.74356C6.13171 8.84641 5.99455 8.90299 5.84813 8.90299C5.70187 8.90299 5.56471 8.84632 5.46179 8.74356L5.13447 8.41608C5.03146 8.31331 4.97496 8.17608 4.97496 8.02974C4.97496 7.88348 5.03146 7.75348 5.13447 7.65063L7.26179 5.53063H0.554632C0.25325 5.53063 -1.90735e-06 5.27087 -1.90735e-06 4.96965V4.50648C-1.90735e-06 4.20526 0.26073 3.96583 0.562112 3.96583Z' fill='white'/%3E%3C/svg%3E%0A");
+        }
+    }
+
+    &.btn-dark {
+        color: #fff;
+        background-color: $dark;
+
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+
+
+    &.btn-full {
+        width: 100%;
+    }
+
+    &.btn-bold {
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: rem(1)
+    }
+}

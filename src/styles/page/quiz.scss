@@ -1,0 +1,186 @@
+.af-quize {
+    background: #212529;
+    color: #fff;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+
+    &__start {
+        display: none;
+    }
+
+    &__question {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95);
+
+    }
+}
+
+.afq-start {
+
+
+
+    &__logo {
+        & span {
+            height: rem(50);
+            width: rem(220);
+            @include bgimage-contain;
+        }
+    }
+
+    &__content {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    &__close {
+        position: absolute;
+        z-index: 5;
+        right: rem(30);
+        top: rem(30);
+
+    }
+
+
+    &__main {
+        display: flex;
+
+    }
+
+    &__left {
+        width: 39%;
+        max-width: 39%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: rem(55);
+    }
+
+    &__right {
+        width: 61%;
+        max-width: 61%;
+        min-height: 100vh;
+    }
+
+    &__right {
+
+        position: relative;
+
+        & .bgimage {
+            @include bgimage-cover;
+            @include layer(1);
+        }
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: rem(28);
+        line-height: 130%;
+        text-transform: uppercase;
+
+        & span {
+            color: $red;
+            border-bottom: 2px solid $main;
+        }
+    }
+
+    &__desc {
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 160%;
+        padding-top: rem(25);
+    }
+
+    &__btn {
+        padding-top: rem(25);
+
+        & button {
+            width: 100%;
+            max-width: rem(295);
+        }
+    }
+
+}
+
+.afq-present {
+    &__title {
+        font-weight: bold;
+        font-size: rem(14);
+        line-height: 160%;
+        color: #737373;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+
+        margin-left: rem(-15);
+        margin-right: rem(-15);
+    }
+
+    &__item {
+        width: calc(50% - 1.88rem);
+        margin: rem(15);
+
+        // &:nth-child(2) {
+        //     & .afq-item-present__text {
+        //         width: 58%;
+        //     }
+        // }
+    }
+
+
+
+}
+
+.afq-item-present {
+
+    display: flex;
+    align-items: center;
+    background-color: #12161B;
+    padding: rem(15) rem(15) rem(15) rem(20);
+    position: relative;
+    cursor: not-allowed;
+
+    &__lock {
+        width: rem(25);
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        & span {
+            padding-top: 100%;
+            @include bgimage-contain;
+            transform: translateX(35%) translateY(-35%);
+            box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+        }
+    }
+
+    &__text {
+        font-weight: bold;
+        font-size: rem(14);
+        line-height: 160%;
+
+        width: 60%;
+    }
+
+    &__image {
+        width: 40%;
+
+        & .bgimage {
+            @include bgimage-contain;
+            padding-top: 70%;
+            background-position-x: right;
+        }
+    }
+}

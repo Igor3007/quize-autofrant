@@ -1,0 +1,15 @@
+@import "helpers/variables";
+@import "helpers/mixins";
+@import "helpers/functions";
+@import "vendor/libs";
+@import "base/fonts";
+@import "helpers/animate";
+@import "base/general";
+@import "../blocks/components/components";
+@import "../blocks/modules/modules";
+
+/* page */
+
+@import "page/quiz.scss";
+@import "page/question.scss";
+@import "page/select.scss";

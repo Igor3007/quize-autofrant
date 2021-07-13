@@ -1,0 +1,104 @@
+$background: none;
+$select-color: #fff;
+$select-background: #212529;
+$select-width: 100%;
+$select-height: 67px;
+
+.select-hidden {
+    display: none;
+    visibility: hidden;
+    padding-right: 10px;
+}
+
+.af-select {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    font-size: rem(14);
+    color: $select-color;
+    width: $select-width;
+    height: $select-height;
+}
+
+.select-styled {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #212529;
+    padding: 8px 25px;
+    transition: all 0.2s ease-in;
+    border: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 160%;
+    color: #737373;
+    display: flex;
+    justify-content: space-between;
+
+    & span {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+
+    &:after {
+        content: "";
+        width: rem(14);
+        min-width: rem(14);
+        height: rem(14);
+        background-image: url("data:image/svg+xml,%3Csvg width='15' height='8' viewBox='0 0 15 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.9214 0.977678C14.0106 1.06696 14.0553 1.16964 14.0553 1.28571C14.0553 1.40179 14.0106 1.50446 13.9214 1.59375L7.68028 7.83482C7.591 7.92411 7.48832 7.96875 7.37225 7.96875C7.25617 7.96875 7.15349 7.92411 7.06421 7.83482L0.823138 1.59375C0.733852 1.50446 0.689209 1.40179 0.689209 1.28571C0.689209 1.16964 0.733852 1.06696 0.823138 0.977678L1.49278 0.308035C1.58207 0.21875 1.68474 0.174107 1.80082 0.174107C1.91689 0.174107 2.01957 0.21875 2.10885 0.308035L7.37225 5.57143L12.6356 0.308035C12.7249 0.21875 12.8276 0.174107 12.9437 0.174107C13.0597 0.174107 13.1624 0.21875 13.2517 0.308035L13.9214 0.977678Z' fill='%23D8D8D8'/%3E%3C/svg%3E%0A");
+        @include bgimage-contain;
+        transition: transform 0.3s ease;
+
+    }
+
+    &:hover {
+        background-color: darken($select-background, 2);
+    }
+
+    &:active,
+    &.active {
+        background-color: darken($select-background, 5);
+
+        &:after {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.select-options {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background-color: darken($select-background, 5);
+
+
+    max-height: 300px;
+    overflow: auto;
+
+    li {
+        margin: 0;
+        padding: 0.75rem rem(15);
+        border-top: 1px solid darken($select-background, 10);
+        transition: all 0.15s ease-in;
+
+        &:hover {
+            color: $select-background;
+            background: $select-color;
+        }
+
+        &[rel="hide"] {
+            display: none;
+        }
+    }
+}
