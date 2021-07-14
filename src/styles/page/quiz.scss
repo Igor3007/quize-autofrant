@@ -1,3 +1,17 @@
+@mixin title {
+    font-weight: bold;
+    font-size: rem(28);
+    line-height: 140%;
+    text-transform: uppercase;
+    padding-bottom: rem(25);
+}
+
+@mixin desc {
+    font-weight: bold;
+    font-size: rem(14);
+    line-height: 160%;
+}
+
 .af-quize {
     background: #212529;
     color: #fff;
@@ -20,6 +34,15 @@
         min-height: 100vh;
         background-color: rgba(0, 0, 0, 0.95);
 
+        display: none;
+    }
+
+    &__form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95);
     }
 }
 

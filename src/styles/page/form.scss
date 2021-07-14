@@ -1,0 +1,310 @@
+.aqf-form {
+    display: flex;
+    max-width: rem(1140);
+    margin: auto;
+    background-color: #212529;
+    width: 100%;
+
+    &__stage {
+        width: 67%;
+        padding: rem(25);
+    }
+
+    &__fields {
+        width: 33%;
+        padding: rem(25);
+        border-left: 1px solid #4f4f4f81;
+        display: flex;
+        flex-direction: column;
+
+        & .afq-item-present {
+            margin-bottom: rem(15);
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &__progress {
+        &-title {
+            @include desc;
+        }
+
+        &-bar {
+            background: #454B52;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 31px;
+            height: rem(5);
+            margin-top: rem(10);
+
+            & span.afq-complete {
+
+                width: 95%;
+                display: block;
+                height: 100%;
+                border-radius: 10px;
+                background: linear-gradient(269.99deg, #F4A898 0.02%, rgba(0, 0, 0, 0) 100.02%, rgba(244, 168, 152, 0) 100.02%), #E74F2F;
+                position: relative;
+
+                &::before {
+                    background: linear-gradient(135deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+                    background-size: 17px 17px;
+                    display: block;
+                    height: 100%;
+                    content: '';
+                    animation: progress-bar-stripes 1s linear infinite;
+                }
+
+            }
+
+            & span.afq-dig {
+                position: absolute;
+                right: 0;
+                bottom: 100%;
+                font-weight: bold;
+                font-size: rem(12);
+                line-height: 148.4%;
+                color: #EEA190;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-bottom: rem(4);
+                transform: translateX(40%);
+
+                &::after {
+                    content: '';
+                    background-image: url("data:image/svg+xml,%3Csvg width='9' height='7' viewBox='0 0 9 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.71875 6.5L0.821636 0.125001L8.61586 0.125L4.71875 6.5Z' fill='%23EEA191'/%3E%3C/svg%3E%0A");
+                    width: rem(9);
+                    height: rem(7);
+                    display: inline-block;
+                    background-repeat: no-repeat;
+                    background-position: center;
+
+                }
+
+
+
+            }
+
+        }
+    }
+
+    &__title {
+        @include title;
+        padding-top: rem(70);
+
+        @media screen and (max-width: $w940) {
+            padding-top: rem(45);
+        }
+    }
+
+    &__desc {
+        @include desc;
+    }
+
+    &__present {
+        padding-top: rem(70);
+
+        @media screen and (max-width: $w940) {
+            padding-top: rem(45);
+        }
+
+        & .afq-item-present__text {
+            font-size: rem(13);
+            line-height: 140%;
+        }
+    }
+
+    &__send {
+        & button {
+            height: rem(70);
+            text-align: left;
+            width: 100%;
+            line-height: 160%;
+        }
+    }
+
+    &__privacy {
+        padding-top: rem(25);
+        font-size: rem(12);
+        line-height: 148.4%;
+        text-align: center;
+        color: #676767;
+
+        & a {
+            color: $main;
+            text-decoration: underline;
+        }
+    }
+
+    &__manager {
+        margin-top: auto;
+    }
+
+    &__data {
+        margin-top: auto;
+    }
+
+    &__msgr {
+        background: #363C42;
+        margin: rem(15) 0;
+        display: flex;
+        align-items: center;
+        padding: rem(10) rem(15);
+
+        & ul {
+            display: flex;
+            margin-left: auto;
+
+            & li {
+                margin: 0 rem(3);
+
+                & label {
+                    display: block;
+                }
+
+                & input {
+
+                    display: none;
+
+                    &:checked {
+                        &~span {
+                            border-bottom: 2px solid $main;
+                        }
+                    }
+                }
+            }
+
+            & span {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: rem(28);
+                min-width: rem(28);
+                height: rem(28);
+                border-bottom: 2px solid transparent;
+                padding-top: rem(2);
+                cursor: pointer;
+
+                &:hover {
+                    border-bottom: 2px solid #fff;
+                }
+
+            }
+
+            & svg {
+                width: rem(20);
+                height: rem(20);
+            }
+        }
+
+        & span {
+            font-size: rem(12);
+            line-height: 150%;
+            color: #FFFFFF;
+        }
+    }
+
+
+}
+
+.af-msgr-vb {
+    & svg {
+        fill: #834995
+    }
+}
+
+.af-msgr-wa {
+    & svg {
+        fill: #00A711
+    }
+}
+
+.af-msgr-tg {
+    & svg {
+        fill: #009CCD
+    }
+}
+
+.afq-phone {
+
+    display: flex;
+    border: 1px solid #fff;
+
+    & label {
+        font-size: rem(12);
+        display: block;
+        position: relative;
+        top: rem(5);
+
+    }
+
+    &__code {
+
+
+
+        border-right: 1px solid #fff;
+
+        min-width: rem(110);
+
+        & label {
+            padding-left: rem(10);
+            padding-right: rem(10);
+        }
+
+        & .af-select {
+            border: none;
+            height: rem(40);
+        }
+
+        & .select-styled {
+            border: none;
+            padding-left: rem(10);
+            padding-right: rem(10);
+            font-weight: bold;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        & .af-country {
+            width: 22px;
+            height: 15px;
+            display: inline-block;
+            background-color: #363c42;
+            margin-right: 5px;
+            position: relative;
+            top: 2px;
+            background-size: cover;
+            background-position: left top;
+        }
+
+        & .af-country-by {
+            background-image: url(../img/flags/by.svg);
+        }
+
+        & .af-country-ru {
+            background-image: url(../img/flags/ru.svg);
+        }
+
+        & .af-country-ua {
+            background-image: url(../img/flags/ua.svg);
+        }
+    }
+
+    &__number {
+
+        padding-left: rem(10);
+        padding-right: rem(10);
+
+        & input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            width: 100%;
+            height: rem(40);
+        }
+    }
+
+
+}

@@ -63,20 +63,26 @@ block content
       .afq-pane__title= data.title
       .afq-pane__type: span Выберите один или несколько
       .afq-pane__desc= data.desc
-      .afq-pane__main
-        .afq-pane__acc
-          each item in [1,2,3,4,5,6]
-            .afq-pane__card: +afq-pane-card()
+      .afq-pane__goods
+        .afq-pane__product
+          each item in product
+            +afq-pane-card(item)
         .afq-pane__nav: +pane-nav()
 
-  mixin afq-pane-card()
+  mixin afq-pane-card(data)
     .afq-pane-card
       label
         input(type="checkbox" name="1")
         .afq-pane-card__wrp
-          .afq-pane-card__title Органайрер в багажник
-          .afq-pane-card__image: +bgimage('../img/common/pane2.jpg')
+          .afq-pane-card__title= data.text
+          .afq-pane-card__image: +bgimage(data.image)
           .afq-pane-card__elem
+
+  mixin afq-manager()
+    .afq-manager
+      .afq-manager__photo: +bgimage('../img/common/manager.jpg')
+      .afq-manager__name Иванов Павел
+      .afq-manager__post Менеджер
 
 
   .af-quize
@@ -135,8 +141,56 @@ block content
             .afq-question__presentlist
               each item in itemPresent
                 +item-present(item)
-            .afq-question__manager
+            .afq-question__manager: +afq-manager()
       .af-quize__form
+        .aqf-form
+          .aqf-form__stage
+            .aqf-form__progress
+              .aqf-form__progress-title Благодарим за ответы, остался последний шаг!
+              .aqf-form__progress-bar
+                span.afq-complete
+                  span.afq-dig 95%
+            .aqf-form__title Оставьте контакты и получите 6 фото чехлов на ваш автомобиль + 3 варианта стоимости
+            .aqf-form__desc Дополнительно мы дарим купон на получение накидки на сидение при заказе авточехла и даем скидку на любой дополнительный автоаксессуар в размере от 25 до 60% (вне зависимости от заказа)
+            .aqf-form__present
+              .afq-present
+                .afq-present__title Ваши бонусы
+                .afq-present__list
+                  each item in itemPresent
+                    .afq-present__item: +item-present(item)
+          .aqf-form__fields
+            .aqf-form__data
+              .aqf-form__phone
+                .afq-phone
+                  .afq-phone__code
+                    label Страна
+                    select(data-multitel="code")
+                      option(value="ru")|+7 
+                      option(value="by")|+375 
+                      option(value="ua")|+71  
+                  .afq-phone__number
+                    label Ваш номер телефона
+                    input(type="tel" data-multitel="input" placeholder="(___)___-__-__")
+              .aqf-form__msgr
+                span Использовать мессенджер
+                ul
+                  li.af-msgr-vb
+                    label
+                      input(type="checkbox" name="msrg-vb")
+                      span: +icons('#ic_vb')
+                  li.af-msgr-wa
+                    label
+                      input(type="checkbox" name="msrg-wa")
+                      span: +icons('#ic_wa')
+                  li.af-msgr-tg
+                    label
+                      input(type="checkbox" name="msrg-tg")
+                      span: +icons('#ic_tg')
+              .aqf-form__send: button.btn.btn-arrow получить 6 фото, расчет <br> и подарки
+              .aqf-form__privacy Нажимая на кнопку “Получить 6 фото, расчет <br> и подарки”  вы соглашаетесь с условиями <br>
+                a(href='#') политики конфиденциальности
+            .aqf-form__manager: +afq-manager()
+
 
 block footer
 

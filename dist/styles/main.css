@@ -542,6 +542,16 @@ Montserrat
   }
 }
 
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 17px 0;
+  }
+}
+
 html {
   font-family: 'Montserrat';
   font-style: normal;
@@ -1695,6 +1705,15 @@ section {
   align-items: center;
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.95);
+  display: none;
+}
+
+.af-quize__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95);
 }
 
 .afq-start__logo span {
@@ -1872,6 +1891,8 @@ section {
   width: 27%;
   padding: 1.5625rem;
   border-left: 1px solid #4f4f4f81;
+  display: flex;
+  flex-direction: column;
 }
 
 .afq-question__present .afq-item-present {
@@ -1938,6 +1959,10 @@ section {
   margin: 0 0.9375rem;
 }
 
+.afq-radio__text {
+  padding-right: 0.625rem;
+}
+
 .afq-pane__page {
   font-weight: bold;
   font-size: 14px;
@@ -1963,20 +1988,12 @@ section {
 .afq-pane__main {
   padding-top: 2.5rem;
   display: flex;
-  flex-wrap: wrap;
-  width: 100%;
   margin: 0 -1rem;
 }
 
 .afq-pane__form,
 .afq-pane__image {
-  width: 50%;
-  margin: 0 1rem;
-}
-
-.afq-pane__nav,
-.afq-pane__acc {
-  width: 100%;
+  width: calc(50% - 1rem);
   margin: 0 1rem;
 }
 
@@ -2000,16 +2017,38 @@ section {
   margin-top: auto;
 }
 
-.afq-pane__acc {
+.afq-pane__type {
+  position: relative;
+  top: -0.75rem;
+}
+
+.afq-pane__type span {
+  font-size: 0.75rem;
+  line-height: 150%;
+  color: #E74F2F;
+  display: inline-block;
+  border: 1px solid #E74F2F;
+  padding: 0.5em 1em;
+}
+
+.afq-pane__product {
   display: flex;
   flex-wrap: wrap;
+  margin: 0 -0.375rem;
+  padding-top: 1.5625rem;
+  padding-bottom: 1.5625rem;
+}
+
+.afq-pane__product > div {
+  width: calc(33.33% - 0.758rem);
+  margin: 0.375rem;
 }
 
 .pane-nav {
   display: flex;
 }
 
-.pane-nav__prev {
+.pane-nav__prev button {
   margin-right: 1.0625rem;
 }
 
@@ -2020,6 +2059,108 @@ section {
 .pane-nav__next button {
   width: 100%;
   max-width: 14.375rem;
+}
+
+.afq-pane-card__wrp {
+  position: relative;
+  border: 1px solid #D8D8D8;
+  cursor: pointer;
+}
+
+.afq-pane-card__image .bgimage {
+  padding-top: 52%;
+  background-color: #292d30;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  transition: 0.3s ease;
+}
+
+.afq-pane-card__title {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 38.93%), url(image.png);
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 5px;
+}
+
+.afq-pane-card__elem {
+  width: 1rem;
+  min-width: 1rem;
+  height: 1rem;
+  background-color: #EBEDF1;
+  border: 1px solid #CAD2DC;
+  border-radius: 50%;
+  margin: 0 0.9375rem;
+  position: absolute !important;
+  top: 12px;
+  left: 0;
+}
+
+.afq-pane-card input {
+  display: none;
+}
+
+.afq-pane-card input:checked ~ .afq-pane-card__wrp {
+  border: 1px solid #2196F3;
+}
+
+.afq-pane-card input:checked ~ .afq-pane-card__wrp .afq-pane-card__elem {
+  position: relative;
+  background-color: #2196F3;
+}
+
+.afq-pane-card input:checked ~ .afq-pane-card__wrp .afq-pane-card__elem:before {
+  content: '';
+  width: 0.5rem;
+  min-height: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #fff;
+  position: relative;
+  top: 3px;
+  left: 3px;
+  display: block;
+}
+
+.afq-manager__photo {
+  max-width: 5.75rem;
+  margin: 0 auto;
+}
+
+.afq-manager__photo .bgimage {
+  padding-top: 100%;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  transition: 0.3s ease;
+  border-radius: 50%;
+}
+
+.afq-manager__name {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 160%;
+  text-align: center;
+  padding-top: 0.625rem;
+}
+
+.afq-manager__post {
+  font-size: 14px;
+  line-height: 160%;
+  color: #737373;
+  text-align: center;
 }
 
 .select-hidden {
@@ -2122,6 +2263,285 @@ section {
   display: none;
 }
 
+.aqf-form {
+  display: flex;
+  max-width: 71.25rem;
+  margin: auto;
+  background-color: #212529;
+  width: 100%;
+}
+
+.aqf-form__stage {
+  width: 67%;
+  padding: 1.5625rem;
+}
+
+.aqf-form__fields {
+  width: 33%;
+  padding: 1.5625rem;
+  border-left: 1px solid #4f4f4f81;
+  display: flex;
+  flex-direction: column;
+}
+
+.aqf-form__fields .afq-item-present {
+  margin-bottom: 0.9375rem;
+}
+
+.aqf-form__fields .afq-item-present:last-child {
+  margin-bottom: 0;
+}
+
+.aqf-form__progress-title {
+  font-weight: bold;
+  font-size: 0.875rem;
+  line-height: 160%;
+}
+
+.aqf-form__progress-bar {
+  background: #454B52;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 31px;
+  height: 0.3125rem;
+  margin-top: 0.625rem;
+}
+
+.aqf-form__progress-bar span.afq-complete {
+  width: 95%;
+  display: block;
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(269.99deg, #F4A898 0.02%, rgba(0, 0, 0, 0) 100.02%, rgba(244, 168, 152, 0) 100.02%), #E74F2F;
+  position: relative;
+}
+
+.aqf-form__progress-bar span.afq-complete::before {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+  background-size: 17px 17px;
+  display: block;
+  height: 100%;
+  content: '';
+  animation: progress-bar-stripes 1s linear infinite;
+}
+
+.aqf-form__progress-bar span.afq-dig {
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  font-weight: bold;
+  font-size: 0.75rem;
+  line-height: 148.4%;
+  color: #EEA190;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0.25rem;
+  transform: translateX(40%);
+}
+
+.aqf-form__progress-bar span.afq-dig::after {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg width='9' height='7' viewBox='0 0 9 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.71875 6.5L0.821636 0.125001L8.61586 0.125L4.71875 6.5Z' fill='%23EEA191'/%3E%3C/svg%3E%0A");
+  width: 0.5625rem;
+  height: 0.4375rem;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.aqf-form__title {
+  font-weight: bold;
+  font-size: 1.75rem;
+  line-height: 140%;
+  text-transform: uppercase;
+  padding-bottom: 1.5625rem;
+  padding-top: 4.375rem;
+}
+
+.aqf-form__desc {
+  font-weight: bold;
+  font-size: 0.875rem;
+  line-height: 160%;
+}
+
+.aqf-form__present {
+  padding-top: 4.375rem;
+}
+
+.aqf-form__present .afq-item-present__text {
+  font-size: 0.8125rem;
+  line-height: 140%;
+}
+
+.aqf-form__send button {
+  height: 4.375rem;
+  text-align: left;
+  width: 100%;
+  line-height: 160%;
+}
+
+.aqf-form__privacy {
+  padding-top: 1.5625rem;
+  font-size: 0.75rem;
+  line-height: 148.4%;
+  text-align: center;
+  color: #676767;
+}
+
+.aqf-form__privacy a {
+  color: #E74F2F;
+  text-decoration: underline;
+}
+
+.aqf-form__manager {
+  margin-top: auto;
+}
+
+.aqf-form__data {
+  margin-top: auto;
+}
+
+.aqf-form__msgr {
+  background: #363C42;
+  margin: 0.9375rem 0;
+  display: flex;
+  align-items: center;
+  padding: 0.625rem 0.9375rem;
+}
+
+.aqf-form__msgr ul {
+  display: flex;
+  margin-left: auto;
+}
+
+.aqf-form__msgr ul li {
+  margin: 0 0.1875rem;
+}
+
+.aqf-form__msgr ul li label {
+  display: block;
+}
+
+.aqf-form__msgr ul li input {
+  display: none;
+}
+
+.aqf-form__msgr ul li input:checked ~ span {
+  border-bottom: 2px solid #E74F2F;
+}
+
+.aqf-form__msgr ul span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  min-width: 1.75rem;
+  height: 1.75rem;
+  border-bottom: 2px solid transparent;
+  padding-top: 0.125rem;
+  cursor: pointer;
+}
+
+.aqf-form__msgr ul span:hover {
+  border-bottom: 2px solid #fff;
+}
+
+.aqf-form__msgr ul svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.aqf-form__msgr span {
+  font-size: 0.75rem;
+  line-height: 150%;
+  color: #FFFFFF;
+}
+
+.af-msgr-vb svg {
+  fill: #834995;
+}
+
+.af-msgr-wa svg {
+  fill: #00A711;
+}
+
+.af-msgr-tg svg {
+  fill: #009CCD;
+}
+
+.afq-phone {
+  display: flex;
+  border: 1px solid #fff;
+}
+
+.afq-phone label {
+  font-size: 0.75rem;
+  display: block;
+  position: relative;
+  top: 0.3125rem;
+}
+
+.afq-phone__code {
+  border-right: 1px solid #fff;
+  min-width: 6.875rem;
+}
+
+.afq-phone__code label {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+}
+
+.afq-phone__code .af-select {
+  border: none;
+  height: 2.5rem;
+}
+
+.afq-phone__code .select-styled {
+  border: none;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
+}
+
+.afq-phone__code .af-country {
+  width: 22px;
+  height: 15px;
+  display: inline-block;
+  background-color: #363c42;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+  background-size: cover;
+  background-position: left top;
+}
+
+.afq-phone__code .af-country-by {
+  background-image: url(../img/flags/by.svg);
+}
+
+.afq-phone__code .af-country-ru {
+  background-image: url(../img/flags/ru.svg);
+}
+
+.afq-phone__code .af-country-ua {
+  background-image: url(../img/flags/ua.svg);
+}
+
+.afq-phone__number {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+}
+
+.afq-phone__number input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  width: 100%;
+  height: 2.5rem;
+}
+
 @media screen and (min-width: 1025px) {
   .hidden {
     margin-right: 17px;
@@ -2158,6 +2578,14 @@ section {
   .video__button svg {
     width: 4.375rem;
     height: 4.375rem;
+  }
+
+  .aqf-form__title {
+    padding-top: 2.8125rem;
+  }
+
+  .aqf-form__present {
+    padding-top: 2.8125rem;
   }
 }
 

@@ -240,6 +240,54 @@ jquery__WEBPACK_IMPORTED_MODULE_4___default()(document).ready(function () {
   /*
   Reference: http://jsfiddle.net/BB3JK/47/
   */
+  jquery__WEBPACK_IMPORTED_MODULE_4___default()('[data-multitel="code"]').each(function () {
+    var $this = jquery__WEBPACK_IMPORTED_MODULE_4___default()(this),
+        numberOfOptions = jquery__WEBPACK_IMPORTED_MODULE_4___default()(this).children('option').length;
+    $this.addClass('select-hidden');
+    $this.wrap('<div class="af-select"></div>');
+    $this.after('<div class="select-styled"></div>');
+    var $styledSelect = $this.next('div.select-styled');
+    var option1 = $this.children('option').eq(0).text();
+    var value1 = $this.children('option').eq(0).val();
+    $styledSelect.html('<span><span class="af-country af-country-' + value1 + '"></span>' + option1 + '</span>');
+    var $list = jquery__WEBPACK_IMPORTED_MODULE_4___default()('<ul />', {
+      'class': 'select-options'
+    }).insertAfter($styledSelect);
+
+    for (var i = 0; i < numberOfOptions; i++) {
+      // $('<li />', {
+      //     text: $this.children('option').eq(i).text(),
+      //     rel: $this.children('option').eq(i).val()
+      // }).appendTo($list);
+      var option = $this.children('option').eq(i).text();
+      var value = $this.children('option').eq(i).val();
+      var html = '<li rel="' + value + '" ><span class="af-country af-country-' + value + '" ></span>' + option + '</li>';
+      $list.append(html);
+    }
+
+    var $listItems = $list.children('li');
+    $styledSelect.on('click', function (e) {
+      e.stopPropagation();
+      jquery__WEBPACK_IMPORTED_MODULE_4___default()('div.select-styled.active').not(this).each(function () {
+        jquery__WEBPACK_IMPORTED_MODULE_4___default()(this).removeClass('active').next('ul.select-options').hide();
+      });
+      jquery__WEBPACK_IMPORTED_MODULE_4___default()(this).toggleClass('active').next('ul.select-options').toggle();
+    });
+    $listItems.on('click', function (e) {
+      e.stopPropagation();
+      $styledSelect.html('<span>' + jquery__WEBPACK_IMPORTED_MODULE_4___default()(this).html() + '</span>').removeClass('active');
+      $this.val(jquery__WEBPACK_IMPORTED_MODULE_4___default()(this).attr('rel'));
+      $list.hide(); //console.log($this.val());
+    });
+    jquery__WEBPACK_IMPORTED_MODULE_4___default()(document).on('click', function () {
+      $styledSelect.removeClass('active');
+      $list.hide();
+    });
+  });
+  /* ============================================================================== */
+
+  /* ============================================================================== */
+
   jquery__WEBPACK_IMPORTED_MODULE_4___default()('select').each(function () {
     var $this = jquery__WEBPACK_IMPORTED_MODULE_4___default()(this),
         numberOfOptions = jquery__WEBPACK_IMPORTED_MODULE_4___default()(this).children('option').length;
@@ -260,20 +308,20 @@ jquery__WEBPACK_IMPORTED_MODULE_4___default()(document).ready(function () {
     }
 
     var $listItems = $list.children('li');
-    $styledSelect.click(function (e) {
+    $styledSelect.on('click', function (e) {
       e.stopPropagation();
       jquery__WEBPACK_IMPORTED_MODULE_4___default()('div.select-styled.active').not(this).each(function () {
         jquery__WEBPACK_IMPORTED_MODULE_4___default()(this).removeClass('active').next('ul.select-options').hide();
       });
       jquery__WEBPACK_IMPORTED_MODULE_4___default()(this).toggleClass('active').next('ul.select-options').toggle();
     });
-    $listItems.click(function (e) {
+    $listItems.on('click', function (e) {
       e.stopPropagation();
       $styledSelect.html('<span>' + jquery__WEBPACK_IMPORTED_MODULE_4___default()(this).text() + '</span>').removeClass('active');
       $this.val(jquery__WEBPACK_IMPORTED_MODULE_4___default()(this).attr('rel'));
       $list.hide(); //console.log($this.val());
     });
-    jquery__WEBPACK_IMPORTED_MODULE_4___default()(document).click(function () {
+    jquery__WEBPACK_IMPORTED_MODULE_4___default()(document).on('click', function () {
       $styledSelect.removeClass('active');
       $list.hide();
     });
@@ -376,6 +424,9 @@ jquery__WEBPACK_IMPORTED_MODULE_4___default()(document).ready(function () {
       jquery__WEBPACK_IMPORTED_MODULE_4___default()('html').removeClass('hidden');
     });
   });
+  jquery__WEBPACK_IMPORTED_MODULE_4___default()('[data-multitel="input"]').inputmask('(999)999-99-99');
+});
+jquery__WEBPACK_IMPORTED_MODULE_4___default()('select').on('change', function (event) {//alert('eee')
 });
 
 /***/ })
