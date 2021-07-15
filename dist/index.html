@@ -8,9 +8,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,500&amp;display=swap" rel="stylesheet">
-    <script src="https://api-maps.yandex.ru/2.1-dev/?lang=ru_RU"></script>
     <link rel="shortcut icon" href="img/favicons/favicon.ico" type="image/x-icon">
     <link rel="icon" sizes="16x16" href="img/favicons/favicon-16x16.png" type="image/png">
     <link rel="icon" sizes="32x32" href="img/favicons/favicon-32x32.png" type="image/png">
@@ -33,9 +30,12 @@
     <header>
     </header>
     <main>
-      <div class="af-quize">
-        <div class="af-quize__wrp">
-          <div class="af-quize__start">
+      <div>
+        <button class="btn" data-quiz="open">Пройти тест</button>
+      </div>
+      <div class="af-quiz">
+        <div class="af-quiz__wrp">
+          <div class="af-quiz__start">
             <div class="afq-start">
               <div class="afq-start__close">close</div>
               <div class="afq-start__main">
@@ -46,7 +46,7 @@
                     <div class="afq-start__title">ПОЛУЧИТЕ 6 ФОТОГРАФИЙ И 3 ВАРИАНТА СТОИМОСТИ АВТОЧЕХЛОВ <span>ЛИЧНО ДЛЯ ВАШЕГО АВТО!</span></div>
                     <div class="afq-start__desc">Ответьте на 5 вопросов и получите купон на подарочную накидку на сидение + скидки от 25% до 60% на автоаксессуары!</div>
                     <div class="afq-start__btn">
-                      <button class="btn btn-arrow">получить фото и расчет</button>
+                      <button class="btn btn-arrow btn-blick" data-quiz="start">получить фото и расчет</button>
                     </div>
                   </div>
                   <div class="afq-start__presrnt">
@@ -80,8 +80,13 @@
               </div>
             </div>
           </div>
-          <div class="af-quize__question">
+          <div class="af-quiz__question">
             <div class="afq-question">
+              <div class="afq-question__close" data-quiz="close">
+                <svg width="30" height="30">
+                  <use xlink:href="/img/sprites/sprite.svg#ic_close"></use>
+                </svg>
+              </div>
               <div class="afq-question__stage">
                 <div class="afq-question__pane active">
                         <div class="afq-pane">
@@ -91,11 +96,9 @@
                           <div class="afq-pane__main">
                             <div class="afq-pane__form">
                               <div class="afq-pane__select">
-                                      <select name="" onchange="" onclick="return false;" id="">
-                                        <option value="">Выберите марку авто</option>
-                                        <option value="">Выберите марку авто</option>
-                                        <option value="">Выберите марку авто</option>
-                                      </select>
+                                <select name="" data-select="brand" onchange="" onclick="return false;" id="">
+                                  <option value="">Выбрать</option>
+                                </select>
                               </div>
                               <div class="afq-pane__nav">
                                       <div class="pane-nav">
@@ -103,7 +106,7 @@
                                           <button class="btn btn-back" data-quiz-nav="prev"></button>
                                         </div>
                                         <div class="pane-nav__next">
-                                          <button class="btn btn-arrow" data-quiz-nav="next">далее</button>
+                                          <button class="btn btn-arrow btn-blick" data-quiz-nav="next">далее</button>
                                         </div>
                                       </div>
                               </div>
@@ -121,11 +124,9 @@
                           <div class="afq-pane__main">
                             <div class="afq-pane__form">
                               <div class="afq-pane__select">
-                                      <select name="" onchange="" onclick="return false;" id="">
-                                        <option value="">Выберите марку авто</option>
-                                        <option value="">Выберите марку авто</option>
-                                        <option value="">Выберите марку авто</option>
-                                      </select>
+                                <select name="" data-select="model" onchange="" onclick="return false;" id="">
+                                  <option value="">Выбрать</option>
+                                </select>
                               </div>
                               <div class="afq-pane__nav">
                                       <div class="pane-nav">
@@ -133,7 +134,7 @@
                                           <button class="btn btn-back" data-quiz-nav="prev"></button>
                                         </div>
                                         <div class="pane-nav__next">
-                                          <button class="btn btn-arrow" data-quiz-nav="next">далее</button>
+                                          <button class="btn btn-arrow btn-blick" data-quiz-nav="next">далее</button>
                                         </div>
                                       </div>
                               </div>
@@ -152,13 +153,16 @@
                             <div class="afq-pane__form">
                               <div class="afq-pane__radio">
                                 <label class="afq-radio">
-                                  <input type="radio" name="type"><span class="afq-radio__elem"></span><span class="afq-radio__text">Ищу готовые</span>
+                                  <input type="radio" name="type">
+                                  <div><span class="afq-radio__elem"></span><span class="afq-radio__text">Ищу готовые</span></div>
                                 </label>
                                 <label class="afq-radio">
-                                  <input type="radio" name="type"><span class="afq-radio__elem"></span><span class="afq-radio__text">Хочу индивидуальныо под свой автомобиль на заказ</span>
+                                  <input type="radio" name="type">
+                                  <div><span class="afq-radio__elem"></span><span class="afq-radio__text">Хочу индивидуальныо под свой автомобиль на заказ</span></div>
                                 </label>
                                 <label class="afq-radio">
-                                  <input type="radio" name="type"><span class="afq-radio__elem"></span><span class="afq-radio__text">Рассматриваю оба варианта</span>
+                                  <input type="radio" name="type">
+                                  <div><span class="afq-radio__elem"></span><span class="afq-radio__text">Рассматриваю оба варианта</span></div>
                                 </label>
                               </div>
                               <div class="afq-pane__nav">
@@ -167,7 +171,7 @@
                                           <button class="btn btn-back" data-quiz-nav="prev"></button>
                                         </div>
                                         <div class="pane-nav__next">
-                                          <button class="btn btn-arrow" data-quiz-nav="next">далее</button>
+                                          <button class="btn btn-arrow btn-blick" data-quiz-nav="next">далее</button>
                                         </div>
                                       </div>
                               </div>
@@ -186,13 +190,16 @@
                             <div class="afq-pane__form">
                               <div class="afq-pane__radio">
                                 <label class="afq-radio">
-                                  <input type="radio" name="type"><span class="afq-radio__elem"></span><span class="afq-radio__text">до 7000 руб.</span>
+                                  <input type="radio" name="type">
+                                  <div><span class="afq-radio__elem"></span><span class="afq-radio__text">до 7000 руб.</span></div>
                                 </label>
                                 <label class="afq-radio">
-                                  <input type="radio" name="type"><span class="afq-radio__elem"></span><span class="afq-radio__text">от 7000 до 10 000 руб.</span>
+                                  <input type="radio" name="type">
+                                  <div><span class="afq-radio__elem"></span><span class="afq-radio__text">от 7000 до 10 000 руб.</span></div>
                                 </label>
                                 <label class="afq-radio">
-                                  <input type="radio" name="type"><span class="afq-radio__elem"></span><span class="afq-radio__text">от 10 000 до 17 000 руб.</span>
+                                  <input type="radio" name="type">
+                                  <div><span class="afq-radio__elem"></span><span class="afq-radio__text">от 10 000 до 17 000 руб.</span></div>
                                 </label>
                               </div>
                               <div class="afq-pane__nav">
@@ -201,7 +208,7 @@
                                           <button class="btn btn-back" data-quiz-nav="prev"></button>
                                         </div>
                                         <div class="pane-nav__next">
-                                          <button class="btn btn-arrow" data-quiz-nav="next">далее</button>
+                                          <button class="btn btn-arrow btn-blick" data-quiz-nav="next">далее</button>
                                         </div>
                                       </div>
                               </div>
@@ -292,7 +299,7 @@
                                         <button class="btn btn-back" data-quiz-nav="prev"></button>
                                       </div>
                                       <div class="pane-nav__next">
-                                        <button class="btn btn-arrow" data-quiz-nav="next">далее</button>
+                                        <button class="btn btn-arrow btn-blick" data-quiz-nav="next">далее</button>
                                       </div>
                                     </div>
                             </div>
@@ -328,8 +335,13 @@
               </div>
             </div>
           </div>
-          <div class="af-quize__form">
+          <div class="af-quiz__form">
             <div class="aqf-form">
+              <div class="aqf-form__close" data-quiz="close">
+                <svg width="30" height="30">
+                  <use xlink:href="/img/sprites/sprite.svg#ic_close"></use>
+                </svg>
+              </div>
               <div class="aqf-form__stage">
                 <div class="aqf-form__progress">
                   <div class="aqf-form__progress-title">Благодарим за ответы, остался последний шаг!</div>
@@ -369,15 +381,11 @@
                     <div class="afq-phone">
                       <div class="afq-phone__code">
                         <label>Страна</label>
-                        <select data-multitel="code">
-                          <option value="ru">+7 </option>
-                          <option value="by">+375 </option>
-                          <option value="ua">+71  </option>
-                        </select>
+                        <select data-multitel="code"></select>
                       </div>
                       <div class="afq-phone__number">
                         <label>Ваш номер телефона</label>
-                        <input type="tel" data-multitel="input" placeholder="(___)___-__-__">
+                        <input type="tel" data-multitel="input" placeholder="(___)___-__-__"><span class="iti-valid-state"></span>
                       </div>
                     </div>
                   </div>
@@ -410,7 +418,7 @@
                     </ul>
                   </div>
                   <div class="aqf-form__send">
-                    <button class="btn btn-arrow">получить 6 фото, расчет <br> и подарки</button>
+                    <button class="btn btn-arrow btn-blick">получить 6 фото, расчет <br> и подарки</button>
                   </div>
                   <div class="aqf-form__privacy">Нажимая на кнопку “Получить 6 фото, расчет <br> и подарки”  вы соглашаетесь с условиями <br><a href="#">политики конфиденциальности</a></div>
                 </div>

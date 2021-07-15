@@ -4,6 +4,21 @@
     margin: auto;
     background-color: #212529;
     width: 100%;
+    position: relative;
+
+    &__close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translateX(100%) translateX(10px);
+        cursor: pointer;
+
+        & svg {
+            width: rem(26);
+            height: rem(26);
+        }
+
+    }
 
     &__stage {
         width: 73%;
@@ -29,9 +44,39 @@
     &__pane {
         display: none;
 
+        & .afq-pane__desc,
+        & .afq-pane__goods,
+        & .afq-pane__main {
+            opacity: 0;
+        }
+
         &.active {
             display: block;
+
+            &.fadeleft {
+                animation: slide-left 0.5s ease forwards;
+            }
+
+            & .afq-pane__title,
+            & .afq-pane__type {
+                animation: slide-left-in 0.5s ease forwards;
+            }
+
+            & .afq-pane__desc {
+                animation: slide-left-in 0.5s 0.2s ease forwards;
+            }
+
+            & .afq-pane__goods,
+            & .afq-pane__main {
+                animation: slide-left-in 0.4s 0.3s ease forwards;
+            }
         }
+
+
+    }
+
+    &__manager {
+        margin-top: auto;
     }
 
 
@@ -39,41 +84,48 @@
 
 .afq-radio {
 
-    display: flex;
-    border: 1px solid #c4c4c4;
-    align-items: center;
+    &>div {
+        display: flex;
+        border: 1px solid #c4c4c4;
+        align-items: center;
 
-    font-weight: bold;
-    font-size: rem(14);
-    line-height: 160%;
-    min-height: rem(70);
-    margin-bottom: rem(10);
-    cursor: pointer;
+        font-weight: bold;
+        font-size: rem(14);
+        line-height: 160%;
+        min-height: rem(70);
+        margin-bottom: rem(10);
+        cursor: pointer;
 
-    &:hover {
-        border-color: #2196F3;
+        &:hover {
+            border-color: #2196F3;
+        }
     }
 
     & input {
         display: none;
 
         &:checked {
-            &~.afq-radio__elem {
+            &~div {
 
-                position: relative;
-                background-color: #2196F3;
+                border-color: #2196F3;
 
-                &:before {
-                    content: '';
-                    width: rem(8);
-                    min-height: rem(8);
-                    height: rem(8);
-                    border-radius: 50%;
-                    background-color: #fff;
+                & .afq-radio__elem {
+
                     position: relative;
-                    top: 3px;
-                    left: 3px;
-                    display: block;
+                    background-color: #2196F3;
+
+                    &:before {
+                        content: '';
+                        width: rem(8);
+                        min-height: rem(8);
+                        height: rem(8);
+                        border-radius: 50%;
+                        background-color: #fff;
+                        position: relative;
+                        top: 3px;
+                        left: 3px;
+                        display: block;
+                    }
                 }
             }
         }

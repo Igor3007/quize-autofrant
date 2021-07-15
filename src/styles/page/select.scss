@@ -86,12 +86,15 @@ $select-height: 67px;
     max-height: 300px;
     overflow: auto;
 
+
+
     li {
         margin: 0;
         padding: 0.75rem rem(15);
         border-top: 1px solid darken($select-background, 10);
         transition: all 0.15s ease-in;
 
+        &.active,
         &:hover {
             color: $select-background;
             background: $select-color;

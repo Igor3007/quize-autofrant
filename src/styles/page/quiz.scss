@@ -12,7 +12,7 @@
     line-height: 160%;
 }
 
-.af-quize {
+.af-quiz {
     background: #212529;
     color: #fff;
     position: fixed;
@@ -22,19 +22,30 @@
     top: 0;
     bottom: 0;
     overflow-y: auto;
+    display: none;
+
+    &.open {
+        display: block;
+        animation: fade 0.5s ease;
+    }
 
     &__start {
-        display: none;
+        &.animate {
+            animation: zoomInFade 0.6s ease-out forwards;
+        }
     }
 
     &__question {
-        display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         background-color: rgba(0, 0, 0, 0.95);
 
         display: none;
+
+        &.open {
+            display: flex;
+        }
     }
 
     &__form {
@@ -43,6 +54,19 @@
         align-items: center;
         min-height: 100vh;
         background-color: rgba(0, 0, 0, 0.95);
+        display: none;
+
+        &.open {
+            display: flex;
+
+            & .aqf-form {
+                animation: slide-right-in 0.5s ease forwards;
+            }
+
+            & .aqf-form__progress-bar span.afq-complete {
+                animation: widthpregressbar 2s 0.3s ease forwards;
+            }
+        }
     }
 }
 

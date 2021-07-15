@@ -5,6 +5,20 @@
     background-color: #212529;
     width: 100%;
 
+    &__close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translateX(100%) translateX(10px);
+        cursor: pointer;
+
+        & svg {
+            width: rem(26);
+            height: rem(26);
+        }
+
+    }
+
     &__stage {
         width: 67%;
         padding: rem(25);
@@ -40,12 +54,13 @@
 
             & span.afq-complete {
 
-                width: 95%;
+                width: 10%;
                 display: block;
                 height: 100%;
                 border-radius: 10px;
                 background: linear-gradient(269.99deg, #F4A898 0.02%, rgba(0, 0, 0, 0) 100.02%, rgba(244, 168, 152, 0) 100.02%), #E74F2F;
                 position: relative;
+                transition: 1s ease 0.3s;
 
                 &::before {
                     background: linear-gradient(135deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
@@ -296,6 +311,7 @@
 
         padding-left: rem(10);
         padding-right: rem(10);
+        position: relative;
 
         & input {
             background: transparent;
@@ -303,6 +319,41 @@
             color: #fff;
             width: 100%;
             height: rem(40);
+
+
+        }
+
+
+        & input[type=tel]~.iti-valid-state {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            display: block;
+            background: #ccc;
+            right: 14px;
+            top: calc(50% - 4px);
+            border-radius: 50%;
+            opacity: 0;
+            transition: 0.3s cubic-bezier(.26, .81, .62, 1.58);
+            transition-property: height, width, transform, border;
+        }
+
+        & input[type=tel][area-valid=false]~.iti-valid-state {
+            background-color: #f00;
+            opacity: 1;
+        }
+
+        & input[type=tel][area-valid=true]~.iti-valid-state {
+
+            border-radius: 0;
+            opacity: 1;
+            border: 2px solid #0bf10b;
+            width: 14px;
+            top: calc(50% - 6px);
+            border-top: none;
+            border-right: none;
+            background: transparent;
+            transform: rotate(-45deg)
         }
     }
 

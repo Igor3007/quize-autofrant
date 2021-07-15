@@ -9,15 +9,12 @@ block header
 
 block content
 
-  mixin select-custom(option)
-    select(name='' onchange='' onclick='return false;' id='')
-      each item in option
-        option(value='')= item
+
 
   mixin pane-nav()
     .pane-nav
       .pane-nav__prev: button.btn.btn-back(data-quiz-nav="prev")
-      .pane-nav__next: button.btn.btn-arrow(data-quiz-nav="next") далее
+      .pane-nav__next: button.btn.btn-arrow.btn-blick(data-quiz-nav="next") далее
 
   mixin item-present(data)
     .afq-item-present
@@ -33,11 +30,9 @@ block content
       .afq-pane__main
         .afq-pane__form
           .afq-pane__select
-            +select-custom([
-              'Выберите марку авто',
-              'Выберите марку авто',
-              'Выберите марку авто',
-            ])
+            select(name='' data-select=''+data.data+'' onchange='' onclick='return false;' id='')
+              each item in ['Выбрать']
+                option(value='')= item
           .afq-pane__nav: +pane-nav()
         .afq-pane__image: +bgimage(data.image)
 
@@ -52,8 +47,9 @@ block content
             each item in data.quest
               label.afq-radio
                 input(type="radio" name="type")
-                span.afq-radio__elem
-                span.afq-radio__text= item
+                div
+                  span.afq-radio__elem
+                  span.afq-radio__text= item
           .afq-pane__nav: +pane-nav()
         .afq-pane__image: +bgimage(data.image)
 
@@ -84,10 +80,12 @@ block content
       .afq-manager__name Иванов Павел
       .afq-manager__post Менеджер
 
+  div: button.btn(data-quiz="open") Пройти тест
 
-  .af-quize
-    .af-quize__wrp
-      .af-quize__start
+
+  .af-quiz
+    .af-quiz__wrp
+      .af-quiz__start
         .afq-start
           .afq-start__close close
           .afq-start__main
@@ -96,7 +94,7 @@ block content
               .afq-start__content 
                 .afq-start__title ПОЛУЧИТЕ 6 ФОТОГРАФИЙ И 3 ВАРИАНТА СТОИМОСТИ АВТОЧЕХЛОВ <span>ЛИЧНО ДЛЯ ВАШЕГО АВТО!</span>
                 .afq-start__desc Ответьте на 5 вопросов и получите купон на подарочную накидку на сидение + скидки от 25% до 60% на автоаксессуары!
-                .afq-start__btn: button.btn.btn-arrow получить фото и расчет
+                .afq-start__btn: button.btn.btn-arrow.btn-blick(data-quiz="start") получить фото и расчет
 
               .afq-start__presrnt
                 .afq-present
@@ -107,18 +105,21 @@ block content
 
             .afq-start__right: +bgimage('../img/common/strart-bg.jpg')
 
-      .af-quize__question
+      .af-quiz__question
         .afq-question
+          .afq-question__close(data-quiz="close"): +icons('#ic_close', 30) 
           .afq-question__stage
             .afq-question__pane.active: +question-pane-select({
               'title': 'Для какой марки автомобиля нужны чехлы?',
               'desc': 'Мы специализируемся на производстве модельных авточехлов под конкретную марку и модель автомобиля. Чехлы полностью повторяют геометрию сидений и смотрятся как перетяжка салона.',
               'image': '../img/common/pane1.jpg',
+              'data':'brand'
             })
             .afq-question__pane: +question-pane-select({
               'title': 'Для какой модели автомобиля необходимы чехлы?',
               'desc': 'Выберите модель вашего автомобиля, мы пришлем фото от наших клиентов, с установленными чехлами для той же модели, что и у вас.',
               'image': '../img/common/pane2.jpg',
+              'data':'model'
             })
             .afq-question__pane: +question-pane-radio({
               'title': 'Вы ищете готовые чехлы или хотите индивидуальные под заказ?',
@@ -142,8 +143,9 @@ block content
               each item in itemPresent
                 +item-present(item)
             .afq-question__manager: +afq-manager()
-      .af-quize__form
+      .af-quiz__form
         .aqf-form
+          .aqf-form__close(data-quiz="close"): +icons('#ic_close', 30) 
           .aqf-form__stage
             .aqf-form__progress
               .aqf-form__progress-title Благодарим за ответы, остался последний шаг!
@@ -165,12 +167,10 @@ block content
                   .afq-phone__code
                     label Страна
                     select(data-multitel="code")
-                      option(value="ru")|+7 
-                      option(value="by")|+375 
-                      option(value="ua")|+71  
                   .afq-phone__number
                     label Ваш номер телефона
                     input(type="tel" data-multitel="input" placeholder="(___)___-__-__")
+                    span.iti-valid-state
               .aqf-form__msgr
                 span Использовать мессенджер
                 ul
@@ -186,7 +186,7 @@ block content
                     label
                       input(type="checkbox" name="msrg-tg")
                       span: +icons('#ic_tg')
-              .aqf-form__send: button.btn.btn-arrow получить 6 фото, расчет <br> и подарки
+              .aqf-form__send: button.btn.btn-arrow.btn-blick получить 6 фото, расчет <br> и подарки
               .aqf-form__privacy Нажимая на кнопку “Получить 6 фото, расчет <br> и подарки”  вы соглашаетесь с условиями <br>
                 a(href='#') политики конфиденциальности
             .aqf-form__manager: +afq-manager()

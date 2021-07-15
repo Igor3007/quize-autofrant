@@ -552,6 +552,91 @@ Montserrat
   }
 }
 
+@keyframes zoomInFade {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  60% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes slide-left {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-left-in {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-right-in {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes widthpregressbar {
+  from {
+    width: 10%;
+  }
+
+  to {
+    width: 95%;
+  }
+}
+
+@-webkit-keyframes blick {
+  15%, to {
+    left: 110%;
+  }
+}
+
+@keyframes blick {
+  15%, to {
+    left: 110%;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 html {
   font-family: 'Montserrat';
   font-style: normal;
@@ -661,6 +746,33 @@ section {
 .btn:focus {
   border: none;
   outline: none;
+}
+
+.btn.btn-blick {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn.btn-blick::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  background: -webkit-gradient(linear, left top, right top, color-stop(10%, rgba(255, 255, 255, 0.1)), color-stop(20%, rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255, 0.6)));
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 10%, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.6));
+  width: 20px;
+  -webkit-transform: skewX(-45deg);
+  transform: skewX(-45deg);
+  left: -20%;
+  -webkit-transition: all .6s ease;
+  transition: all .6s ease;
+  -webkit-animation-name: blick;
+  animation-name: blick;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 }
 
 .btn:disabled {
@@ -1683,7 +1795,7 @@ section {
 
 /* page */
 
-.af-quize {
+.af-quiz {
   background: #212529;
   color: #fff;
   position: fixed;
@@ -1693,13 +1805,31 @@ section {
   top: 0;
   bottom: 0;
   overflow-y: auto;
-}
-
-.af-quize__start {
   display: none;
 }
 
-.af-quize__question {
+.af-quiz.open {
+  display: block;
+  animation: fade 0.5s ease;
+}
+
+.af-quiz__start.animate {
+  animation: zoomInFade 0.6s ease-out forwards;
+}
+
+.af-quiz__question {
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: none;
+}
+
+.af-quiz__question.open {
+  display: flex;
+}
+
+.af-quiz__form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1708,12 +1838,16 @@ section {
   display: none;
 }
 
-.af-quize__form {
+.af-quiz__form.open {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.95);
+}
+
+.af-quiz__form.open .aqf-form {
+  animation: slide-right-in 0.5s ease forwards;
+}
+
+.af-quiz__form.open .aqf-form__progress-bar span.afq-complete {
+  animation: widthpregressbar 2s 0.3s ease forwards;
 }
 
 .afq-start__logo span {
@@ -1880,6 +2014,20 @@ section {
   margin: auto;
   background-color: #212529;
   width: 100%;
+  position: relative;
+}
+
+.afq-question__close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(100%) translateX(10px);
+  cursor: pointer;
+}
+
+.afq-question__close svg {
+  width: 1.625rem;
+  height: 1.625rem;
 }
 
 .afq-question__stage {
@@ -1907,11 +2055,39 @@ section {
   display: none;
 }
 
+.afq-question__pane .afq-pane__desc,
+.afq-question__pane .afq-pane__goods,
+.afq-question__pane .afq-pane__main {
+  opacity: 0;
+}
+
 .afq-question__pane.active {
   display: block;
 }
 
-.afq-radio {
+.afq-question__pane.active.fadeleft {
+  animation: slide-left 0.5s ease forwards;
+}
+
+.afq-question__pane.active .afq-pane__title,
+.afq-question__pane.active .afq-pane__type {
+  animation: slide-left-in 0.5s ease forwards;
+}
+
+.afq-question__pane.active .afq-pane__desc {
+  animation: slide-left-in 0.5s 0.2s ease forwards;
+}
+
+.afq-question__pane.active .afq-pane__goods,
+.afq-question__pane.active .afq-pane__main {
+  animation: slide-left-in 0.4s 0.3s ease forwards;
+}
+
+.afq-question__manager {
+  margin-top: auto;
+}
+
+.afq-radio > div {
   display: flex;
   border: 1px solid #c4c4c4;
   align-items: center;
@@ -1923,7 +2099,7 @@ section {
   cursor: pointer;
 }
 
-.afq-radio:hover {
+.afq-radio > div:hover {
   border-color: #2196F3;
 }
 
@@ -1931,12 +2107,16 @@ section {
   display: none;
 }
 
-.afq-radio input:checked ~ .afq-radio__elem {
+.afq-radio input:checked ~ div {
+  border-color: #2196F3;
+}
+
+.afq-radio input:checked ~ div .afq-radio__elem {
   position: relative;
   background-color: #2196F3;
 }
 
-.afq-radio input:checked ~ .afq-radio__elem:before {
+.afq-radio input:checked ~ div .afq-radio__elem:before {
   content: '';
   width: 0.5rem;
   min-height: 0.5rem;
@@ -2254,6 +2434,7 @@ section {
   transition: all 0.15s ease-in;
 }
 
+.select-options li.active,
 .select-options li:hover {
   color: #212529;
   background: #fff;
@@ -2269,6 +2450,19 @@ section {
   margin: auto;
   background-color: #212529;
   width: 100%;
+}
+
+.aqf-form__close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(100%) translateX(10px);
+  cursor: pointer;
+}
+
+.aqf-form__close svg {
+  width: 1.625rem;
+  height: 1.625rem;
 }
 
 .aqf-form__stage {
@@ -2307,12 +2501,13 @@ section {
 }
 
 .aqf-form__progress-bar span.afq-complete {
-  width: 95%;
+  width: 10%;
   display: block;
   height: 100%;
   border-radius: 10px;
   background: linear-gradient(269.99deg, #F4A898 0.02%, rgba(0, 0, 0, 0) 100.02%, rgba(244, 168, 152, 0) 100.02%), #E74F2F;
   position: relative;
+  transition: 1s ease 0.3s;
 }
 
 .aqf-form__progress-bar span.afq-complete::before {
@@ -2532,6 +2727,7 @@ section {
 .afq-phone__number {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
+  position: relative;
 }
 
 .afq-phone__number input {
@@ -2540,6 +2736,37 @@ section {
   color: #fff;
   width: 100%;
   height: 2.5rem;
+}
+
+.afq-phone__number input[type=tel] ~ .iti-valid-state {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  display: block;
+  background: #ccc;
+  right: 14px;
+  top: calc(50% - 4px);
+  border-radius: 50%;
+  opacity: 0;
+  transition: 0.3s cubic-bezier(0.26, 0.81, 0.62, 1.58);
+  transition-property: height, width, transform, border;
+}
+
+.afq-phone__number input[type=tel][area-valid=false] ~ .iti-valid-state {
+  background-color: #f00;
+  opacity: 1;
+}
+
+.afq-phone__number input[type=tel][area-valid=true] ~ .iti-valid-state {
+  border-radius: 0;
+  opacity: 1;
+  border: 2px solid #0bf10b;
+  width: 14px;
+  top: calc(50% - 6px);
+  border-top: none;
+  border-right: none;
+  background: transparent;
+  transform: rotate(-45deg);
 }
 
 @media screen and (min-width: 1025px) {
