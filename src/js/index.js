@@ -29,13 +29,9 @@ $('[data-multitel="code"]').each(function(){
   
     var $list = $('<ul />', {
         'class': 'select-options'
-    }).insertAfter($styledSelect);
+    }).insertAfter($styledSelect); 
   
     for (var i = 0; i < numberOfOptions; i++) {
-        // $('<li />', {
-        //     text: $this.children('option').eq(i).text(),
-        //     rel: $this.children('option').eq(i).val()
-        // }).appendTo($list);
 
         var option = $this.children('option').eq(i).text();
         var value = $this.children('option').eq(i).val();
