@@ -5,12 +5,31 @@
     background-color: #212529;
     width: 100%;
 
+    @media screen and (max-width: $w940) {
+        flex-direction: column;
+    }
+
     &__close {
         position: absolute;
         right: 0;
         top: 0;
         transform: translateX(100%) translateX(10px);
         cursor: pointer;
+
+        @media screen and (max-width: $w1280) {
+            transform: none;
+            top: rem(15);
+            right: rem(15);
+
+
+        }
+
+        @media screen and (max-width: $w580) {
+            & svg {
+                width: rem(20);
+                height: rem(20);
+            }
+        }
 
         & svg {
             width: rem(26);
@@ -20,16 +39,38 @@
     }
 
     &__stage {
-        width: 67%;
-        padding: rem(25);
+        width: 65%;
+        padding: rem(45);
+
+        @media screen and (max-width: $w940) {
+            width: 100%;
+            padding: rem(25);
+        }
+    }
+
+    &__phone {
+        margin-top: rem(89);
+
+        @media screen and (max-width: $w940) {
+            margin-top: rem(0);
+
+        }
     }
 
     &__fields {
-        width: 33%;
+        width: 35%;
         padding: rem(25);
         border-left: 1px solid #4f4f4f81;
         display: flex;
         flex-direction: column;
+
+        @media screen and (max-width: $w940) {
+            width: 100%;
+        }
+
+        @media screen and (max-width: $w480) {
+            padding-top: rem(5);
+        }
 
         & .afq-item-present {
             margin-bottom: rem(15);
@@ -51,6 +92,10 @@
             border-radius: 31px;
             height: rem(5);
             margin-top: rem(10);
+
+            @media screen and (max-width: $w480) {
+                margin-top: 24px;
+            }
 
             & span.afq-complete {
 
@@ -108,26 +153,114 @@
     &__title {
         @include title;
         padding-top: rem(70);
+        padding-bottom: rem(15);
 
         @media screen and (max-width: $w940) {
             padding-top: rem(45);
         }
+
+        @media screen and (max-width: $w480) {
+            padding-top: rem(25);
+
+        }
+
+
     }
 
     &__desc {
         @include desc;
+
+        @media screen and (max-width: $w580) {
+            font-weight: 500;
+        }
     }
 
     &__present {
-        padding-top: rem(70);
+        padding-top: rem(190);
 
         @media screen and (max-width: $w940) {
             padding-top: rem(45);
+        }
+
+        @media screen and (max-width: $w480) {
+            padding-top: rem(25);
+
         }
 
         & .afq-item-present__text {
             font-size: rem(13);
             line-height: 140%;
+        }
+
+        & .afq-item-present__text {
+            @media screen and (max-width: $w1280) {
+                font-size: 12px;
+            }
+
+            @media screen and (max-width: $w940) {
+                font-weight: 500;
+            }
+
+            @media screen and (max-width: $w580) {
+                display: none;
+            }
+        }
+
+        & .afq-item-present__image {
+            @media screen and (max-width: $w580) {
+                width: 60px;
+                height: 100%;
+
+                & span {
+                    padding-top: 100%;
+                }
+            }
+
+            @media screen and (max-width: $w480) {
+                width: 45px;
+            }
+
+            @media screen and (max-width: $w360) {
+                width: 40px;
+            }
+        }
+
+        & .afq-item-present {
+
+
+            @media screen and (min-width: $w760) {
+                margin-bottom: rem(15);
+            }
+
+            @media screen and (max-width: $w760) {
+                margin: 5px;
+            }
+
+            @media screen and (max-width: $w580) {
+                border-radius: 8px;
+            }
+
+            @media screen and (max-width: $w480) {
+                padding: rem(10);
+            }
+
+            &:last-child {
+                @media screen and (min-width: $w760) {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        & .afq-present__item {
+            width: auto;
+            margin: 6px;
+            padding-top: rem(10);
+        }
+
+        & .afq-present__item>div {
+            @media screen and (max-width: $w580) {
+                height: auto;
+            }
         }
     }
 
@@ -155,6 +288,17 @@
 
     &__manager {
         margin-top: auto;
+        margin-bottom: auto;
+
+        @media screen and (max-width: $w940) {
+            padding-top: rem(25);
+        }
+
+        @media screen and (max-width: $w580) {
+            display: none;
+        }
+
+
     }
 
     &__data {
@@ -218,6 +362,53 @@
             font-size: rem(12);
             line-height: 150%;
             color: #FFFFFF;
+
+            @media screen and (max-width: $w940) {
+                font-size: 13px;
+            }
+        }
+    }
+
+
+
+
+    &__arrow {
+        position: relative;
+        height: rem(15);
+
+        @media screen and (max-width: $w940) {
+            height: 0;
+        }
+
+        & span {
+            width: 109px;
+            height: 109px;
+            display: block;
+            background-size: contain;
+            position: absolute;
+            right: rem(-120);
+            bottom: 100%;
+            background-position: center;
+
+            @media screen and (max-width: $w940) {
+                right: 5%;
+                transform: scale(1, -1)
+            }
+
+            @media screen and (max-width: $w760) {
+                width: 80px;
+                height: 80px;
+            }
+
+            @media screen and (max-width: $w580) {
+                width: 60px;
+                height: 60px;
+            }
+
+            @media screen and (max-width: $w360) {
+                width: 50px;
+                height: 50px;
+            }
         }
     }
 
@@ -312,6 +503,7 @@
         padding-left: rem(10);
         padding-right: rem(10);
         position: relative;
+        width: 100%;
 
         & input {
             background: transparent;

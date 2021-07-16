@@ -113,6 +113,7 @@ $('select').each(function(){
         $('div.select-styled.active').not(this).each(function(){
             $(this).removeClass('active').next('ul.select-options').hide();
         });
+        $('html').addClass('select-custom-open')
         $(this).toggleClass('active').next('ul.select-options').toggle();
 
 
@@ -121,6 +122,7 @@ $('select').each(function(){
     $listItems.on('click', function(e) {
         e.stopPropagation();
         $styledSelect.html('<span>'+$(this).text()+'</span>').removeClass('active');
+        $('html').removeClass('select-custom-open')
         $this.val($(this).attr('rel'));
         $list.hide();
         //console.log($this.val());
@@ -128,6 +130,7 @@ $('select').each(function(){
   
     $(document).on('click', function() {
         $styledSelect.removeClass('active');
+        $('html').removeClass('select-custom-open')
         $list.hide();
     });
 
@@ -202,14 +205,16 @@ function updateSelect(elem, callback){
           $(this.item).addClass('fadeleft')
 
           setTimeout(function(){
-            $(_this.item).removeClass('fadeleft')
-            $(_this.item).removeClass('active')
+            $(_this.item).removeClass('active animate-loaded fadeleft')
             activeSlide ();
           }, 500)
 
           function activeSlide (){
             $(_this.item).eq((index-1)).addClass('active')
 
+            setTimeout(function(){
+              $(_this.item).eq((index-1)).addClass('animate-loaded')
+            }, 600)
           }
 
           
@@ -332,6 +337,10 @@ function updateSelect(elem, callback){
         setTimeout(function(){
             $('.af-quiz__start').hide()
             $('.af-quiz__question').addClass('open')
+
+            setTimeout(function(){
+              $('.afq-question__stage > div').first().addClass('animate-loaded')
+            }, 600)
             
         }, 600)
     
@@ -364,7 +373,7 @@ function updateSelect(elem, callback){
           this.renderBrand = function(array){
 
               $(this.containerBrand).empty();
-              $(this.containerBrand).append('<option value="0" >-Выберите-</option>')
+              $(this.containerBrand).append('<option value="0" >Выберите марку авто</option>')
  
               var item;
 
@@ -384,7 +393,7 @@ function updateSelect(elem, callback){
           this.renderModel = function(array, brand){
 
               $(this.containerModel).empty();
-              $(this.containerModel).append('<option value="0" >-Выберите-</option>')
+              $(this.containerModel).append('<option value="0" >Выберите модель авто</option>')
 
               let model = array[brand].model;
               let _this = this;
@@ -416,6 +425,44 @@ function updateSelect(elem, callback){
 
       $(document).on('change', '[data-select="model"]',function(event){
           brandModelInstans.setModel($(this).val())
+      })
+
+
+      /* =========================================================== */
+      /* =========================================================== */
+      $('.af-quiz form').on('submit', function(event){
+        event.preventDefault()
+      })
+      $('[data-quiz="send"]').on('click', function(event){
+
+        event.preventDefault()
+        
+        let input = $('.af-quiz form').find('input[type="tel"]');
+
+        if (input.val() == ''){
+          input.attr('area-valid', 'false')
+        }else {
+
+
+          // submit
+          $('.loading').addClass('load')
+
+          setTimeout(function(){
+
+          // response success
+          $('.af-quiz__form').removeClass('open');
+          $('.af-quiz__message').addClass('open');
+
+            setTimeout(function(){
+              $('[data-quiz="close"]').trigger('click')
+            }, 2000);
+
+
+          }, 2000  )
+
+        }
+
+        
       })
 
 

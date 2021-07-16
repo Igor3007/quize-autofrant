@@ -4,12 +4,33 @@
     line-height: 140%;
     text-transform: uppercase;
     padding-bottom: rem(25);
+
+    @media screen and (max-width: $w1280) {
+        font-size: rem(25);
+        line-height: 140%;
+    }
+
+    @media screen and (max-width: $w480) {
+        font-size: rem(22);
+        font-weight: 600;
+    }
+
 }
 
 @mixin desc {
     font-weight: bold;
     font-size: rem(14);
     line-height: 160%;
+}
+
+.open-test button {
+    position: relative;
+    top: 50vh;
+    left: 50vw;
+
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 16px;
+    height: rem(55);
 }
 
 .af-quiz {
@@ -48,6 +69,7 @@
         }
     }
 
+    &__message,
     &__form {
         display: flex;
         justify-content: center;
@@ -59,8 +81,9 @@
         &.open {
             display: flex;
 
+            & .af-message,
             & .aqf-form {
-                animation: slide-right-in 0.5s ease forwards;
+                animation: slide-right-in 0.7s ease forwards;
             }
 
             & .aqf-form__progress-bar span.afq-complete {
@@ -68,6 +91,8 @@
             }
         }
     }
+
+
 }
 
 .afq-start {
@@ -79,6 +104,10 @@
             height: rem(50);
             width: rem(220);
             @include bgimage-contain;
+        }
+
+        @media screen and (max-width: $w580) {
+            padding-bottom: rem(25);
         }
     }
 
@@ -94,13 +123,40 @@
         z-index: 5;
         right: rem(30);
         top: rem(30);
+        cursor: pointer;
 
+        @media screen and (max-width: $w580) {
+            right: rem(15);
+            top: rem(15);
+        }
+
+        & svg {
+            width: rem(35);
+            height: rem(35);
+
+            @media screen and (max-width: $w1280) {
+                width: rem(26);
+                height: rem(26);
+            }
+
+            @media screen and (max-width: $w580) {
+
+                width: rem(20);
+                height: rem(20);
+
+            }
+
+
+        }
     }
 
 
     &__main {
         display: flex;
 
+        @media screen and (max-width: $w760) {
+            flex-direction: column-reverse;
+        }
     }
 
     &__left {
@@ -110,12 +166,61 @@
         display: flex;
         flex-direction: column;
         padding: rem(55);
+
+        @media screen and (max-width: $w1280) {
+            padding: 30px;
+
+        }
+
+        @media screen and (max-width: $w1100) {
+            width: 45%;
+            max-width: 45%;
+        }
+
+        @media screen and (max-width: $w1024) {
+            width: 50%;
+            max-width: 50%;
+        }
+
+        @media screen and (max-width: $w940) {
+            width: 55%;
+            max-width: 55%;
+        }
+
+        @media screen and (max-width: $w760) {
+            width: 100%;
+            min-width: 100%;
+        }
+
+        min-height: 70vh;
     }
 
     &__right {
         width: 61%;
         max-width: 61%;
         min-height: 100vh;
+
+        @media screen and (max-width: $w1100) {
+            width: 55%;
+            max-width: 55%;
+        }
+
+        @media screen and (max-width: $w1024) {
+            width: 50%;
+            max-width: 50%;
+        }
+
+        @media screen and (max-width: $w940) {
+            width: 45%;
+            max-width: 45%;
+        }
+
+        @media screen and (max-width: $w760) {
+            width: 100%;
+            min-width: 100%;
+
+            min-height: 30vh;
+        }
     }
 
     &__right {
@@ -134,25 +239,58 @@
         line-height: 130%;
         text-transform: uppercase;
 
+        @media screen and (max-width: $w1280) {
+            font-size: rem(25);
+            line-height: 140%;
+        }
+
+        @media screen and (max-width: $w480) {
+            font-size: rem(22);
+            font-weight: 600;
+        }
+
         & span {
-            color: $red;
+            color: $main;
             border-bottom: 2px solid $main;
         }
     }
 
     &__desc {
         font-weight: bold;
-        font-size: 18px;
+        font-size: rem(18);
         line-height: 160%;
-        padding-top: rem(25);
+        padding-top: rem(35);
+
+        @media screen and (max-width: $w1280) {
+            font-size: rem(17);
+        }
+
+        @media screen and (max-width: $w480) {
+            font-size: rem(16);
+            font-weight: 500;
+        }
     }
 
     &__btn {
-        padding-top: rem(25);
+        padding-top: rem(40);
 
         & button {
             width: 100%;
             max-width: rem(295);
+
+            @media screen and (max-width: $w580) {
+                max-width: 320px;
+                height: 55px;
+            }
+        }
+    }
+
+    &__present {
+
+        padding-top: rem(25);
+
+        @media screen and (max-width: $w760) {
+            padding-top: rem(25);
         }
     }
 
@@ -164,6 +302,12 @@
         font-size: rem(14);
         line-height: 160%;
         color: #737373;
+
+        padding-bottom: rem(11);
+
+        @media screen and (max-width: $w580) {
+            font-weight: 500;
+        }
     }
 
     &__list {
@@ -172,17 +316,16 @@
 
         margin-left: rem(-15);
         margin-right: rem(-15);
+        margin-bottom: rem(-15);
     }
 
     &__item {
         width: calc(50% - 1.88rem);
         margin: rem(15);
 
-        // &:nth-child(2) {
-        //     & .afq-item-present__text {
-        //         width: 58%;
-        //     }
-        // }
+        &>div {
+            height: 100%;
+        }
     }
 
 
@@ -199,7 +342,7 @@
     cursor: not-allowed;
 
     &__lock {
-        width: rem(25);
+        width: rem(24);
         position: absolute;
         right: 0;
         top: 0;
@@ -217,8 +360,13 @@
         font-weight: bold;
         font-size: rem(14);
         line-height: 160%;
-
         width: 60%;
+
+        @media screen and (max-width: $w580) {
+            font-weight: 500;
+            line-height: 140%;
+            font-size: rem(13);
+        }
     }
 
     &__image {
@@ -230,4 +378,148 @@
             background-position-x: right;
         }
     }
+}
+
+.af-message {
+
+    max-width: rem(800);
+    margin: auto;
+    background-color: #212529;
+    width: 100%;
+    padding: rem(45);
+
+    @media screen and (max-width: $w940) {
+        padding: rem(25);
+
+    }
+
+    &__close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translateX(100%) translateX(10px);
+        cursor: pointer;
+        z-index: 3;
+
+        @media screen and (max-width: $w1280) {
+            transform: none;
+            top: rem(15);
+            right: rem(15);
+
+
+        }
+
+        @media screen and (max-width: $w580) {
+            & svg {
+                width: rem(20);
+                height: rem(20);
+            }
+        }
+
+        & svg {
+            width: rem(26);
+            height: rem(26);
+        }
+
+    }
+
+
+    &__title {
+        @include title();
+        font-size: rem(45);
+    }
+
+    &__subtitle {
+        @include desc();
+        font-weight: 500;
+        font-size: rem(18);
+    }
+
+    &__present {
+        padding-top: rem(25);
+        max-width: 500px;
+
+        & .afq-item-present__text {
+            font-size: rem(13);
+            line-height: 140%;
+        }
+
+        & .afq-item-present__text {
+            @media screen and (max-width: $w1280) {
+                font-size: 12px;
+            }
+
+            @media screen and (max-width: $w940) {
+                font-weight: 500;
+            }
+
+            @media screen and (max-width: $w580) {
+                display: none;
+            }
+        }
+
+        & .afq-item-present__image {
+            @media screen and (max-width: $w580) {
+                width: 60px;
+                height: 100%;
+
+                & span {
+                    padding-top: 100%;
+                }
+            }
+
+            @media screen and (max-width: $w480) {
+                width: 45px;
+            }
+
+            @media screen and (max-width: $w360) {
+                width: 40px;
+            }
+        }
+
+        & .afq-item-present {
+
+
+            @media screen and (min-width: $w760) {
+                margin-bottom: rem(15);
+            }
+
+            @media screen and (max-width: $w760) {
+                margin: 5px;
+            }
+
+            @media screen and (max-width: $w580) {
+                border-radius: 8px;
+            }
+
+            @media screen and (max-width: $w480) {
+                padding: rem(10);
+            }
+
+            &:last-child {
+                @media screen and (min-width: $w760) {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        & .afq-present__item {
+            width: auto;
+            margin: 6px;
+            padding-top: rem(10);
+        }
+
+        & .afq-present__item>div {
+            @media screen and (max-width: $w580) {
+                height: auto;
+            }
+        }
+    }
+}
+
+.aqf-form__loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }

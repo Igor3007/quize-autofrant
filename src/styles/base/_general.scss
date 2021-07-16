@@ -10,11 +10,11 @@ html {
 
 
 
-    @media screen and (max-width: $w1440) {
+    @media screen and (max-width: $w1280) {
         font-size: 15px;
     }
 
-    @media screen and (max-width: $w1280) {
+    @media screen and (max-width: $w940) {
         font-size: 14px;
     }
 }

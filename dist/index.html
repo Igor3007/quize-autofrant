@@ -24,34 +24,346 @@
     <link rel="apple-touch-icon" sizes="167x167" href="img/favicons/apple-touch-icon-167x167.png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon-180x180.png">
     <link rel="apple-touch-icon" sizes="1024x1024" href="img/favicons/apple-touch-icon-1024x1024.png">
-    <link rel="stylesheet" href="styles/main.css?v=1.52">
+    <link rel="stylesheet" href="styles/main.min.css?v=1.52">
   </head>
   <body>
     <header>
     </header>
     <main>
-      <div>
+      <div class="open-test">
         <button class="btn" data-quiz="open">Пройти тест</button>
       </div>
       <div class="af-quiz">
-        <div class="af-quiz__wrp">
-          <div class="af-quiz__start">
-            <div class="afq-start">
-              <div class="afq-start__close">close</div>
-              <div class="afq-start__main">
-                <div class="afq-start__left">
-                  <div class="afq-start__logo"><span class="bgimage" style="background-image: url(/img/common/logo.svg)"></span>
-                  </div>
-                  <div class="afq-start__content"> 
-                    <div class="afq-start__title">ПОЛУЧИТЕ 6 ФОТОГРАФИЙ И 3 ВАРИАНТА СТОИМОСТИ АВТОЧЕХЛОВ <span>ЛИЧНО ДЛЯ ВАШЕГО АВТО!</span></div>
-                    <div class="afq-start__desc">Ответьте на 5 вопросов и получите купон на подарочную накидку на сидение + скидки от 25% до 60% на автоаксессуары!</div>
-                    <div class="afq-start__btn">
-                      <button class="btn btn-arrow btn-blick" data-quiz="start">получить фото и расчет</button>
+        <form action="post" method="POST">
+          <div class="af-quiz__wrp">
+            <div class="af-quiz__start">
+              <div class="afq-start">
+                <div class="afq-start__close" data-quiz="close">
+                  <svg width="30" height="30">
+                    <use xlink:href="/img/sprites/sprite.svg#ic_close"></use>
+                  </svg>
+                </div>
+                <div class="afq-start__main">
+                  <div class="afq-start__left">
+                    <div class="afq-start__logo"><span class="bgimage" style="background-image: url(/img/common/logo.svg)"></span>
+                    </div>
+                    <div class="afq-start__content"> 
+                      <div class="afq-start__title">ПОЛУЧИТЕ 6 ФОТОГРАФИЙ И 3 ВАРИАНТА СТОИМОСТИ АВТОЧЕХЛОВ <span>ЛИЧНО ДЛЯ ВАШЕГО АВТО!</span></div>
+                      <div class="afq-start__desc">Ответьте на 5 вопросов и получите купон на подарочную накидку на сидение + скидки от 25% до 60% на <br> автоаксессуары!</div>
+                      <div class="afq-start__btn">
+                        <button class="btn btn-arrow btn-blick" data-quiz="start">получить фото и расчет</button>
+                      </div>
+                    </div>
+                    <div class="afq-start__present">
+                      <div class="afq-present">
+                        <div class="afq-present__title">После прохождения вы получите:</div>
+                        <div class="afq-present__list">
+                          <div class="afq-present__item">
+                                  <div class="afq-item-present">
+                                    <div class="afq-item-present__lock"><span class="bgimage" style="background-image: url(/img/common/locked.svg)"></span>
+                                    </div>
+                                    <div class="afq-item-present__text">6 фото чехлов под ваше авто</div>
+                                    <div class="afq-item-present__image"><span class="bgimage" style="background-image: url(/img/present/pr1.png)"></span>
+                                    </div>
+                                  </div>
+                          </div>
+                          <div class="afq-present__item">
+                                  <div class="afq-item-present">
+                                    <div class="afq-item-present__lock"><span class="bgimage" style="background-image: url(/img/common/locked.svg)"></span>
+                                    </div>
+                                    <div class="afq-item-present__text">Купон на бесплатную накидку</div>
+                                    <div class="afq-item-present__image"><span class="bgimage" style="background-image: url(/img/present/pr2.png)"></span>
+                                    </div>
+                                  </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="afq-start__presrnt">
+                  <div class="afq-start__right"><span class="bgimage" style="background-image: url(../img/common/strart-bg.jpg)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="af-quiz__question">
+              <div class="afq-question">
+                <div class="afq-question__close" data-quiz="close">
+                  <svg width="30" height="30">
+                    <use xlink:href="/img/sprites/sprite.svg#ic_close"></use>
+                  </svg>
+                </div>
+                <div class="afq-question__stage">
+                  <div class="afq-question__pane active">
+                          <div class="afq-pane">
+                            <div class="afq-pane__page">Вопрос <span data-quiz-count="current">1</span> из <span data-quiz-count="total">5</span></div>
+                            <div class="afq-pane__title">Для какой марки автомобиля нужны чехлы?</div>
+                            <div class="afq-pane__desc">Мы специализируемся на производстве модельных авточехлов под конкретную марку и модель автомобиля. Чехлы полностью повторяют геометрию сидений и смотрятся как перетяжка салона.</div>
+                            <div class="afq-pane__main">
+                              <div class="afq-pane__form">
+                                <div class="afq-pane__select">
+                                  <select name="" data-select="brand" onchange="" onclick="return false;" id="">
+                                    <option value="">Выберите марку авто</option>
+                                  </select>
+                                </div>
+                                <div class="afq-pane__nav">
+                                        <div class="pane-nav">
+                                          <div class="pane-nav__prev">
+                                            <button class="btn btn-back" data-quiz-nav="prev"></button>
+                                          </div>
+                                          <div class="pane-nav__next">
+                                            <button class="btn btn-arrow btn-blick" data-quiz-nav="next">далее</button>
+                                          </div>
+                                        </div>
+                                </div>
+                              </div>
+                              <div class="afq-pane__image"><span class="bgimage" style="background-image: url(../img/common/pane1.jpg)"></span>
+                              </div>
+                            </div>
+                          </div>
+                  </div>
+                  <div class="afq-question__pane">
+                          <div class="afq-pane">
+                            <div class="afq-pane__page">Вопрос <span data-quiz-count="current">1</span> из <span data-quiz-count="total">5</span></div>
+                            <div class="afq-pane__title">Для какой модели автомобиля необходимы чехлы?</div>
+                            <div class="afq-pane__desc">Выберите модель вашего автомобиля, мы пришлем фото от наших клиентов, с установленными чехлами для той же модели, что и у вас.</div>
+                            <div class="afq-pane__main">
+                              <div class="afq-pane__form">
+                                <div class="afq-pane__select">
+                                  <select name="" data-select="model" onchange="" onclick="return false;" id="">
+                                    <option value="">Выберите модель авто</option>
+                                  </select>
+                                </div>
+                                <div class="afq-pane__nav">
+                                        <div class="pane-nav">
+                                          <div class="pane-nav__prev">
+                                            <button class="btn btn-back" data-quiz-nav="prev"></button>
+                                          </div>
+                                          <div class="pane-nav__next">
+                                            <button class="btn btn-arrow btn-blick" data-quiz-nav="next">далее</button>
+                                          </div>
+                                        </div>
+                                </div>
+                              </div>
+                              <div class="afq-pane__image"><span class="bgimage" style="background-image: url(../img/common/pane2.jpg)"></span>
+                              </div>
+                            </div>
+                          </div>
+                  </div>
+                  <div class="afq-question__pane">
+                          <div class="afq-pane">
+                            <div class="afq-pane__page">Вопрос <span data-quiz-count="current">1</span> из <span data-quiz-count="total">5</span></div>
+                            <div class="afq-pane__title">Вы ищете готовые чехлы или хотите индивидуальные под заказ?</div>
+                            <div class="afq-pane__desc">Компания Автофрант специализируется на индивидуальных разработках чехлов под запросы клиента. Вы можете выбрать разные типы экокожи или алькантары, от эконом до эксклюзивного Italia, подобрать цвет чехла или вставок, двойные строчки по контуру, отстрочки ромбом, сотами и прочее, заказать индивидуальную вышивку и многое другое. Так же мы имеем готовые более простые решения чехлов в наличии.</div>
+                            <div class="afq-pane__main">
+                              <div class="afq-pane__form">
+                                <div class="afq-pane__radio">
+                                  <label class="afq-radio">
+                                    <input type="radio" name="type">
+                                    <div><span class="afq-radio__elem"></span><span class="afq-radio__text">Ищу готовые</span></div>
+                                  </label>
+                                  <label class="afq-radio">
+                                    <input type="radio" name="type">
+                                    <div><span class="afq-radio__elem"></span><span class="afq-radio__text">Хочу индивидуальныо под свой автомобиль на заказ</span></div>
+                                  </label>
+                                  <label class="afq-radio">
+                                    <input type="radio" name="type">
+                                    <div><span class="afq-radio__elem"></span><span class="afq-radio__text">Рассматриваю оба варианта</span></div>
+                                  </label>
+                                </div>
+                                <div class="afq-pane__nav">
+                                        <div class="pane-nav">
+                                          <div class="pane-nav__prev">
+                                            <button class="btn btn-back" data-quiz-nav="prev"></button>
+                                          </div>
+                                          <div class="pane-nav__next">
+                                            <button class="btn btn-arrow btn-blick" data-quiz-nav="next">далее</button>
+                                          </div>
+                                        </div>
+                                </div>
+                              </div>
+                              <div class="afq-pane__image"><span class="bgimage" style="background-image: url(../img/common/pane3.jpg)"></span>
+                              </div>
+                            </div>
+                          </div>
+                  </div>
+                  <div class="afq-question__pane">
+                          <div class="afq-pane">
+                            <div class="afq-pane__page">Вопрос <span data-quiz-count="current">1</span> из <span data-quiz-count="total">5</span></div>
+                            <div class="afq-pane__title">На какую стоимость чехлов ориентируетесь?</div>
+                            <div class="afq-pane__desc">Цена комплекта чехлов может отличаться от вида материала, различных видов отделки, сложности исполнения и тд. Например в производстве мы используем разные материалы: алькантара, экокожа трех видов (classic, premium, exlusive) Материалы отличаются производителем, толщиной, износостойкостью, тактильными и физическими свойствами. Более подробно вы можете уточнить информацию у наших менеджеров.</div>
+                            <div class="afq-pane__main">
+                              <div class="afq-pane__form">
+                                <div class="afq-pane__radio">
+                                  <label class="afq-radio">
+                                    <input type="radio" name="type">
+                                    <div><span class="afq-radio__elem"></span><span class="afq-radio__text">до 7000 руб.</span></div>
+                                  </label>
+                                  <label class="afq-radio">
+                                    <input type="radio" name="type">
+                                    <div><span class="afq-radio__elem"></span><span class="afq-radio__text">от 7000 до 10 000 руб.</span></div>
+                                  </label>
+                                  <label class="afq-radio">
+                                    <input type="radio" name="type">
+                                    <div><span class="afq-radio__elem"></span><span class="afq-radio__text">от 10 000 до 17 000 руб.</span></div>
+                                  </label>
+                                </div>
+                                <div class="afq-pane__nav">
+                                        <div class="pane-nav">
+                                          <div class="pane-nav__prev">
+                                            <button class="btn btn-back" data-quiz-nav="prev"></button>
+                                          </div>
+                                          <div class="pane-nav__next">
+                                            <button class="btn btn-arrow btn-blick" data-quiz-nav="next">далее</button>
+                                          </div>
+                                        </div>
+                                </div>
+                              </div>
+                              <div class="afq-pane__image"><span class="bgimage" style="background-image: url(../img/common/pane4.jpg)"></span>
+                              </div>
+                            </div>
+                          </div>
+                  </div>
+                  <div class="afq-question__pane">
+                          <div class="afq-pane afq-pane--image">
+                            <div class="afq-pane__page">Вопрос <span data-quiz-count="current">1</span> из <span data-quiz-count="total">5</span></div>
+                            <div class="afq-pane__title">Какие другие автоаксессуары могут быть полезны в автомобиле?</div>
+                            <div class="afq-pane__type"><span>Выберите один или несколько</span></div>
+                            <div class="afq-pane__desc">Так же мы производим различные дополнительные аксессуары для автомобиля. Выберите наиболее полезные для вас. Мы предоставим на них скидки от 25% до 60% с бесплатной доставкой, вне зависимости от заказа!</div>
+                            <div class="afq-pane__goods">
+                              <div class="afq-pane__product">
+                                      <div class="afq-pane-card">
+                                        <label>
+                                          <input type="checkbox" name="1">
+                                          <div class="afq-pane-card__wrp">
+                                            <div class="afq-pane-card__title">Органайрер в багажник</div>
+                                            <div class="afq-pane-card__image"><span class="bgimage" style="background-image: url(../img/product/pr1.jpg)"></span>
+                                            </div>
+                                            <div class="afq-pane-card__elem"></div>
+                                          </div>
+                                        </label>
+                                      </div>
+                                      <div class="afq-pane-card">
+                                        <label>
+                                          <input type="checkbox" name="1">
+                                          <div class="afq-pane-card__wrp">
+                                            <div class="afq-pane-card__title">Накидка органайзер</div>
+                                            <div class="afq-pane-card__image"><span class="bgimage" style="background-image: url(../img/product/pr2.jpg)"></span>
+                                            </div>
+                                            <div class="afq-pane-card__elem"></div>
+                                          </div>
+                                        </label>
+                                      </div>
+                                      <div class="afq-pane-card">
+                                        <label>
+                                          <input type="checkbox" name="1">
+                                          <div class="afq-pane-card__wrp">
+                                            <div class="afq-pane-card__title">Подушка подголовник</div>
+                                            <div class="afq-pane-card__image"><span class="bgimage" style="background-image: url(../img/product/pr3.jpg)"></span>
+                                            </div>
+                                            <div class="afq-pane-card__elem"></div>
+                                          </div>
+                                        </label>
+                                      </div>
+                                      <div class="afq-pane-card">
+                                        <label>
+                                          <input type="checkbox" name="1">
+                                          <div class="afq-pane-card__wrp">
+                                            <div class="afq-pane-card__title">Багажная сетка</div>
+                                            <div class="afq-pane-card__image"><span class="bgimage" style="background-image: url(../img/product/pr4.jpg)"></span>
+                                            </div>
+                                            <div class="afq-pane-card__elem"></div>
+                                          </div>
+                                        </label>
+                                      </div>
+                                      <div class="afq-pane-card">
+                                        <label>
+                                          <input type="checkbox" name="1">
+                                          <div class="afq-pane-card__wrp">
+                                            <div class="afq-pane-card__title">Накидка от ног ребенка</div>
+                                            <div class="afq-pane-card__image"><span class="bgimage" style="background-image: url(../img/product/pr5.jpg)"></span>
+                                            </div>
+                                            <div class="afq-pane-card__elem"></div>
+                                          </div>
+                                        </label>
+                                      </div>
+                                      <div class="afq-pane-card">
+                                        <label>
+                                          <input type="checkbox" name="1">
+                                          <div class="afq-pane-card__wrp">
+                                            <div class="afq-pane-card__title">Накидка органайзер в багажник</div>
+                                            <div class="afq-pane-card__image"><span class="bgimage" style="background-image: url(../img/product/pr6.jpg)"></span>
+                                            </div>
+                                            <div class="afq-pane-card__elem"></div>
+                                          </div>
+                                        </label>
+                                      </div>
+                              </div>
+                              <div class="afq-pane__nav">
+                                      <div class="pane-nav">
+                                        <div class="pane-nav__prev">
+                                          <button class="btn btn-back" data-quiz-nav="prev"></button>
+                                        </div>
+                                        <div class="pane-nav__next">
+                                          <button class="btn btn-arrow btn-blick" data-quiz-nav="next">далее</button>
+                                        </div>
+                                      </div>
+                              </div>
+                            </div>
+                          </div>
+                  </div>
+                </div>
+                <div class="afq-question__present">
+                  <div class="afq-question__presentlist">
+                          <div class="afq-item-present">
+                            <div class="afq-item-present__lock"><span class="bgimage" style="background-image: url(/img/common/locked.svg)"></span>
+                            </div>
+                            <div class="afq-item-present__text">6 фото чехлов под ваше авто</div>
+                            <div class="afq-item-present__image"><span class="bgimage" style="background-image: url(/img/present/pr1.png)"></span>
+                            </div>
+                          </div>
+                          <div class="afq-item-present">
+                            <div class="afq-item-present__lock"><span class="bgimage" style="background-image: url(/img/common/locked.svg)"></span>
+                            </div>
+                            <div class="afq-item-present__text">Купон на бесплатную накидку</div>
+                            <div class="afq-item-present__image"><span class="bgimage" style="background-image: url(/img/present/pr2.png)"></span>
+                            </div>
+                          </div>
+                  </div>
+                  <div class="afq-question__manager">
+                          <div class="afq-manager">
+                            <div class="afq-manager__photo"><span class="bgimage" style="background-image: url(../img/common/manager.jpg)"></span>
+                            </div>
+                            <div class="afq-manager__main">
+                              <div class="afq-manager__name">Иванов Павел</div>
+                              <div class="afq-manager__post">Менеджер</div>
+                            </div>
+                          </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="af-quiz__form">
+              <div class="aqf-form">
+                <div class="aqf-form__close" data-quiz="close">
+                  <svg width="30" height="30">
+                    <use xlink:href="/img/sprites/sprite.svg#ic_close"></use>
+                  </svg>
+                </div>
+                <div class="aqf-form__loader">
+                  <div class="loading">
+                    <div class="indeterminate"></div>
+                  </div>
+                </div>
+                <div class="aqf-form__stage">
+                  <div class="aqf-form__progress">
+                    <div class="aqf-form__progress-title">Благодарим за ответы, остался последний шаг!</div>
+                    <div class="aqf-form__progress-bar"><span class="afq-complete"><span class="afq-dig">95%</span></span></div>
+                  </div>
+                  <div class="aqf-form__title">Оставьте контакты и получите 6 фото чехлов на ваш автомобиль + 3 варианта стоимости</div>
+                  <div class="aqf-form__desc">Дополнительно мы дарим купон на получение накидки на сидение при заказе авточехла и даем скидку на любой дополнительный автоаксессуар в размере от 25 до 60% (вне зависимости от заказа)</div>
+                  <div class="aqf-form__present">
                     <div class="afq-present">
-                      <div class="afq-present__title">После прохождения вы получите:</div>
+                      <div class="afq-present__title">Ваши бонусы</div>
                       <div class="afq-present__list">
                         <div class="afq-present__item">
                                 <div class="afq-item-present">
@@ -74,284 +386,81 @@
                       </div>
                     </div>
                   </div>
+                  <div class="aqf-form__arrow"><span class="bgimage" style="background-image: url(../img/common/right-arrow.svg)"></span>
+                  </div>
                 </div>
-                <div class="afq-start__right"><span class="bgimage" style="background-image: url(../img/common/strart-bg.jpg)"></span>
+                <div class="aqf-form__fields">
+                  <div class="aqf-form__data">
+                    <div class="aqf-form__phone">
+                      <div class="afq-phone">
+                        <div class="afq-phone__code">
+                          <label>Страна</label>
+                          <select data-multitel="code"></select>
+                        </div>
+                        <div class="afq-phone__number">
+                          <label>Ваш номер телефона</label>
+                          <input type="tel" data-multitel="input" placeholder="(___)___-__-__"><span class="iti-valid-state"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="aqf-form__msgr"><span>Использовать мессенджер</span>
+                      <ul>
+                        <li class="af-msgr-vb">
+                          <label>
+                            <input type="checkbox" name="msrg-vb"><span>
+                              <svg width="25" height="25">
+                                <use xlink:href="/img/sprites/sprite.svg#ic_vb"></use>
+                              </svg></span>
+                          </label>
+                        </li>
+                        <li class="af-msgr-wa">
+                          <label>
+                            <input type="checkbox" name="msrg-wa"><span>
+                              <svg width="25" height="25">
+                                <use xlink:href="/img/sprites/sprite.svg#ic_wa"></use>
+                              </svg></span>
+                          </label>
+                        </li>
+                        <li class="af-msgr-tg">
+                          <label>
+                            <input type="checkbox" name="msrg-tg"><span>
+                              <svg width="25" height="25">
+                                <use xlink:href="/img/sprites/sprite.svg#ic_tg"></use>
+                              </svg></span>
+                          </label>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="aqf-form__send">
+                      <button class="btn btn-arrow btn-blick" data-quiz="send" type="submit">получить 6 фото, расчет <br> и подарки</button>
+                    </div>
+                    <div class="aqf-form__privacy">Нажимая на кнопку “Получить 6 фото, расчет <br> и подарки”  вы соглашаетесь с условиями <br><a href="#">политики конфиденциальности</a></div>
+                  </div>
+                  <div class="aqf-form__manager">
+                          <div class="afq-manager">
+                            <div class="afq-manager__photo"><span class="bgimage" style="background-image: url(../img/common/manager.jpg)"></span>
+                            </div>
+                            <div class="afq-manager__main">
+                              <div class="afq-manager__name">Иванов Павел</div>
+                              <div class="afq-manager__post">Менеджер</div>
+                            </div>
+                          </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="af-quiz__question">
-            <div class="afq-question">
-              <div class="afq-question__close" data-quiz="close">
-                <svg width="30" height="30">
-                  <use xlink:href="/img/sprites/sprite.svg#ic_close"></use>
-                </svg>
-              </div>
-              <div class="afq-question__stage">
-                <div class="afq-question__pane active">
-                        <div class="afq-pane">
-                          <div class="afq-pane__page">Вопрос <span data-quiz-count="current">1</span> из <span data-quiz-count="total">5</span></div>
-                          <div class="afq-pane__title">Для какой марки автомобиля нужны чехлы?</div>
-                          <div class="afq-pane__desc">Мы специализируемся на производстве модельных авточехлов под конкретную марку и модель автомобиля. Чехлы полностью повторяют геометрию сидений и смотрятся как перетяжка салона.</div>
-                          <div class="afq-pane__main">
-                            <div class="afq-pane__form">
-                              <div class="afq-pane__select">
-                                <select name="" data-select="brand" onchange="" onclick="return false;" id="">
-                                  <option value="">Выбрать</option>
-                                </select>
-                              </div>
-                              <div class="afq-pane__nav">
-                                      <div class="pane-nav">
-                                        <div class="pane-nav__prev">
-                                          <button class="btn btn-back" data-quiz-nav="prev"></button>
-                                        </div>
-                                        <div class="pane-nav__next">
-                                          <button class="btn btn-arrow btn-blick" data-quiz-nav="next">далее</button>
-                                        </div>
-                                      </div>
-                              </div>
-                            </div>
-                            <div class="afq-pane__image"><span class="bgimage" style="background-image: url(../img/common/pane1.jpg)"></span>
-                            </div>
-                          </div>
-                        </div>
+            <div class="af-quiz__message">
+              <div class="af-message">
+                <div class="af-message__close" data-quiz="close">
+                  <svg width="30" height="30">
+                    <use xlink:href="/img/sprites/sprite.svg#ic_close"></use>
+                  </svg>
                 </div>
-                <div class="afq-question__pane">
-                        <div class="afq-pane">
-                          <div class="afq-pane__page">Вопрос <span data-quiz-count="current">1</span> из <span data-quiz-count="total">5</span></div>
-                          <div class="afq-pane__title">Для какой модели автомобиля необходимы чехлы?</div>
-                          <div class="afq-pane__desc">Выберите модель вашего автомобиля, мы пришлем фото от наших клиентов, с установленными чехлами для той же модели, что и у вас.</div>
-                          <div class="afq-pane__main">
-                            <div class="afq-pane__form">
-                              <div class="afq-pane__select">
-                                <select name="" data-select="model" onchange="" onclick="return false;" id="">
-                                  <option value="">Выбрать</option>
-                                </select>
-                              </div>
-                              <div class="afq-pane__nav">
-                                      <div class="pane-nav">
-                                        <div class="pane-nav__prev">
-                                          <button class="btn btn-back" data-quiz-nav="prev"></button>
-                                        </div>
-                                        <div class="pane-nav__next">
-                                          <button class="btn btn-arrow btn-blick" data-quiz-nav="next">далее</button>
-                                        </div>
-                                      </div>
-                              </div>
-                            </div>
-                            <div class="afq-pane__image"><span class="bgimage" style="background-image: url(../img/common/pane2.jpg)"></span>
-                            </div>
-                          </div>
-                        </div>
-                </div>
-                <div class="afq-question__pane">
-                        <div class="afq-pane">
-                          <div class="afq-pane__page">Вопрос <span data-quiz-count="current">1</span> из <span data-quiz-count="total">5</span></div>
-                          <div class="afq-pane__title">Вы ищете готовые чехлы или хотите индивидуальные под заказ?</div>
-                          <div class="afq-pane__desc">Компания Автофрант специализируется на индивидуальных разработках чехлов под запросы клиента. Вы можете выбрать разные типы экокожи или алькантары, от эконом до эксклюзивного Italia, подобрать цвет чехла или вставок, двойные строчки по контуру, отстрочки ромбом, сотами и прочее, заказать индивидуальную вышивку и многое другое. Так же мы имеем готовые более простые решения чехлов в наличии.</div>
-                          <div class="afq-pane__main">
-                            <div class="afq-pane__form">
-                              <div class="afq-pane__radio">
-                                <label class="afq-radio">
-                                  <input type="radio" name="type">
-                                  <div><span class="afq-radio__elem"></span><span class="afq-radio__text">Ищу готовые</span></div>
-                                </label>
-                                <label class="afq-radio">
-                                  <input type="radio" name="type">
-                                  <div><span class="afq-radio__elem"></span><span class="afq-radio__text">Хочу индивидуальныо под свой автомобиль на заказ</span></div>
-                                </label>
-                                <label class="afq-radio">
-                                  <input type="radio" name="type">
-                                  <div><span class="afq-radio__elem"></span><span class="afq-radio__text">Рассматриваю оба варианта</span></div>
-                                </label>
-                              </div>
-                              <div class="afq-pane__nav">
-                                      <div class="pane-nav">
-                                        <div class="pane-nav__prev">
-                                          <button class="btn btn-back" data-quiz-nav="prev"></button>
-                                        </div>
-                                        <div class="pane-nav__next">
-                                          <button class="btn btn-arrow btn-blick" data-quiz-nav="next">далее</button>
-                                        </div>
-                                      </div>
-                              </div>
-                            </div>
-                            <div class="afq-pane__image"><span class="bgimage" style="background-image: url(../img/common/pane3.jpg)"></span>
-                            </div>
-                          </div>
-                        </div>
-                </div>
-                <div class="afq-question__pane">
-                        <div class="afq-pane">
-                          <div class="afq-pane__page">Вопрос <span data-quiz-count="current">1</span> из <span data-quiz-count="total">5</span></div>
-                          <div class="afq-pane__title">На какую стоимость чехлов ориентируетесь?</div>
-                          <div class="afq-pane__desc">Цена комплекта чехлов может отличаться от вида материала, различных видов отделки, сложности исполнения и тд. Например в производстве мы используем разные материалы: алькантара, экокожа трех видов (classic, premium, exlusive) Материалы отличаются производителем, толщиной, износостойкостью, тактильными и физическими свойствами. Более подробно вы можете уточнить информацию у наших менеджеров.</div>
-                          <div class="afq-pane__main">
-                            <div class="afq-pane__form">
-                              <div class="afq-pane__radio">
-                                <label class="afq-radio">
-                                  <input type="radio" name="type">
-                                  <div><span class="afq-radio__elem"></span><span class="afq-radio__text">до 7000 руб.</span></div>
-                                </label>
-                                <label class="afq-radio">
-                                  <input type="radio" name="type">
-                                  <div><span class="afq-radio__elem"></span><span class="afq-radio__text">от 7000 до 10 000 руб.</span></div>
-                                </label>
-                                <label class="afq-radio">
-                                  <input type="radio" name="type">
-                                  <div><span class="afq-radio__elem"></span><span class="afq-radio__text">от 10 000 до 17 000 руб.</span></div>
-                                </label>
-                              </div>
-                              <div class="afq-pane__nav">
-                                      <div class="pane-nav">
-                                        <div class="pane-nav__prev">
-                                          <button class="btn btn-back" data-quiz-nav="prev"></button>
-                                        </div>
-                                        <div class="pane-nav__next">
-                                          <button class="btn btn-arrow btn-blick" data-quiz-nav="next">далее</button>
-                                        </div>
-                                      </div>
-                              </div>
-                            </div>
-                            <div class="afq-pane__image"><span class="bgimage" style="background-image: url(../img/common/pane4.jpg)"></span>
-                            </div>
-                          </div>
-                        </div>
-                </div>
-                <div class="afq-question__pane">
-                        <div class="afq-pane">
-                          <div class="afq-pane__page">Вопрос <span data-quiz-count="current">1</span> из <span data-quiz-count="total">5</span></div>
-                          <div class="afq-pane__title">Какие другие автоаксессуары могут быть полезны в автомобиле?</div>
-                          <div class="afq-pane__type"><span>Выберите один или несколько</span></div>
-                          <div class="afq-pane__desc">Так же мы производим различные дополнительные аксессуары для автомобиля. Выберите наиболее полезные для вас. Мы предоставим на них скидки от 25% до 60% с бесплатной доставкой, вне зависимости от заказа!</div>
-                          <div class="afq-pane__goods">
-                            <div class="afq-pane__product">
-                                    <div class="afq-pane-card">
-                                      <label>
-                                        <input type="checkbox" name="1">
-                                        <div class="afq-pane-card__wrp">
-                                          <div class="afq-pane-card__title">Органайрер в багажник</div>
-                                          <div class="afq-pane-card__image"><span class="bgimage" style="background-image: url(../img/product/pr1.jpg)"></span>
-                                          </div>
-                                          <div class="afq-pane-card__elem"></div>
-                                        </div>
-                                      </label>
-                                    </div>
-                                    <div class="afq-pane-card">
-                                      <label>
-                                        <input type="checkbox" name="1">
-                                        <div class="afq-pane-card__wrp">
-                                          <div class="afq-pane-card__title">Накидка органайзер</div>
-                                          <div class="afq-pane-card__image"><span class="bgimage" style="background-image: url(../img/product/pr2.jpg)"></span>
-                                          </div>
-                                          <div class="afq-pane-card__elem"></div>
-                                        </div>
-                                      </label>
-                                    </div>
-                                    <div class="afq-pane-card">
-                                      <label>
-                                        <input type="checkbox" name="1">
-                                        <div class="afq-pane-card__wrp">
-                                          <div class="afq-pane-card__title">Подушка подголовник</div>
-                                          <div class="afq-pane-card__image"><span class="bgimage" style="background-image: url(../img/product/pr3.jpg)"></span>
-                                          </div>
-                                          <div class="afq-pane-card__elem"></div>
-                                        </div>
-                                      </label>
-                                    </div>
-                                    <div class="afq-pane-card">
-                                      <label>
-                                        <input type="checkbox" name="1">
-                                        <div class="afq-pane-card__wrp">
-                                          <div class="afq-pane-card__title">Багажная сетка</div>
-                                          <div class="afq-pane-card__image"><span class="bgimage" style="background-image: url(../img/product/pr4.jpg)"></span>
-                                          </div>
-                                          <div class="afq-pane-card__elem"></div>
-                                        </div>
-                                      </label>
-                                    </div>
-                                    <div class="afq-pane-card">
-                                      <label>
-                                        <input type="checkbox" name="1">
-                                        <div class="afq-pane-card__wrp">
-                                          <div class="afq-pane-card__title">Накидка от ног ребенка</div>
-                                          <div class="afq-pane-card__image"><span class="bgimage" style="background-image: url(../img/product/pr5.jpg)"></span>
-                                          </div>
-                                          <div class="afq-pane-card__elem"></div>
-                                        </div>
-                                      </label>
-                                    </div>
-                                    <div class="afq-pane-card">
-                                      <label>
-                                        <input type="checkbox" name="1">
-                                        <div class="afq-pane-card__wrp">
-                                          <div class="afq-pane-card__title">Накидка органайзер в багажник</div>
-                                          <div class="afq-pane-card__image"><span class="bgimage" style="background-image: url(../img/product/pr6.jpg)"></span>
-                                          </div>
-                                          <div class="afq-pane-card__elem"></div>
-                                        </div>
-                                      </label>
-                                    </div>
-                            </div>
-                            <div class="afq-pane__nav">
-                                    <div class="pane-nav">
-                                      <div class="pane-nav__prev">
-                                        <button class="btn btn-back" data-quiz-nav="prev"></button>
-                                      </div>
-                                      <div class="pane-nav__next">
-                                        <button class="btn btn-arrow btn-blick" data-quiz-nav="next">далее</button>
-                                      </div>
-                                    </div>
-                            </div>
-                          </div>
-                        </div>
-                </div>
-              </div>
-              <div class="afq-question__present">
-                <div class="afq-question__presentlist">
-                        <div class="afq-item-present">
-                          <div class="afq-item-present__lock"><span class="bgimage" style="background-image: url(/img/common/locked.svg)"></span>
-                          </div>
-                          <div class="afq-item-present__text">6 фото чехлов под ваше авто</div>
-                          <div class="afq-item-present__image"><span class="bgimage" style="background-image: url(/img/present/pr1.png)"></span>
-                          </div>
-                        </div>
-                        <div class="afq-item-present">
-                          <div class="afq-item-present__lock"><span class="bgimage" style="background-image: url(/img/common/locked.svg)"></span>
-                          </div>
-                          <div class="afq-item-present__text">Купон на бесплатную накидку</div>
-                          <div class="afq-item-present__image"><span class="bgimage" style="background-image: url(/img/present/pr2.png)"></span>
-                          </div>
-                        </div>
-                </div>
-                <div class="afq-question__manager">
-                        <div class="afq-manager">
-                          <div class="afq-manager__photo"><span class="bgimage" style="background-image: url(../img/common/manager.jpg)"></span>
-                          </div>
-                          <div class="afq-manager__name">Иванов Павел</div>
-                          <div class="afq-manager__post">Менеджер</div>
-                        </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="af-quiz__form">
-            <div class="aqf-form">
-              <div class="aqf-form__close" data-quiz="close">
-                <svg width="30" height="30">
-                  <use xlink:href="/img/sprites/sprite.svg#ic_close"></use>
-                </svg>
-              </div>
-              <div class="aqf-form__stage">
-                <div class="aqf-form__progress">
-                  <div class="aqf-form__progress-title">Благодарим за ответы, остался последний шаг!</div>
-                  <div class="aqf-form__progress-bar"><span class="afq-complete"><span class="afq-dig">95%</span></span></div>
-                </div>
-                <div class="aqf-form__title">Оставьте контакты и получите 6 фото чехлов на ваш автомобиль + 3 варианта стоимости</div>
-                <div class="aqf-form__desc">Дополнительно мы дарим купон на получение накидки на сидение при заказе авточехла и даем скидку на любой дополнительный автоаксессуар в размере от 25 до 60% (вне зависимости от заказа)</div>
-                <div class="aqf-form__present">
+                <div class="af-message__title">Спасибо !</div>
+                <div class="af-message__subtitle">Наш менеджер свяжется с вами в ближайшее время</div>
+                <div class="af-message__present">
                   <div class="afq-present">
-                    <div class="afq-present__title">Ваши бонусы</div>
+                    <div class="afq-present__title">Ваши бонусы:</div>
                     <div class="afq-present__list">
                       <div class="afq-present__item">
                               <div class="afq-item-present">
@@ -375,70 +484,14 @@
                   </div>
                 </div>
               </div>
-              <div class="aqf-form__fields">
-                <div class="aqf-form__data">
-                  <div class="aqf-form__phone">
-                    <div class="afq-phone">
-                      <div class="afq-phone__code">
-                        <label>Страна</label>
-                        <select data-multitel="code"></select>
-                      </div>
-                      <div class="afq-phone__number">
-                        <label>Ваш номер телефона</label>
-                        <input type="tel" data-multitel="input" placeholder="(___)___-__-__"><span class="iti-valid-state"></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="aqf-form__msgr"><span>Использовать мессенджер</span>
-                    <ul>
-                      <li class="af-msgr-vb">
-                        <label>
-                          <input type="checkbox" name="msrg-vb"><span>
-                            <svg width="25" height="25">
-                              <use xlink:href="/img/sprites/sprite.svg#ic_vb"></use>
-                            </svg></span>
-                        </label>
-                      </li>
-                      <li class="af-msgr-wa">
-                        <label>
-                          <input type="checkbox" name="msrg-wa"><span>
-                            <svg width="25" height="25">
-                              <use xlink:href="/img/sprites/sprite.svg#ic_wa"></use>
-                            </svg></span>
-                        </label>
-                      </li>
-                      <li class="af-msgr-tg">
-                        <label>
-                          <input type="checkbox" name="msrg-tg"><span>
-                            <svg width="25" height="25">
-                              <use xlink:href="/img/sprites/sprite.svg#ic_tg"></use>
-                            </svg></span>
-                        </label>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="aqf-form__send">
-                    <button class="btn btn-arrow btn-blick">получить 6 фото, расчет <br> и подарки</button>
-                  </div>
-                  <div class="aqf-form__privacy">Нажимая на кнопку “Получить 6 фото, расчет <br> и подарки”  вы соглашаетесь с условиями <br><a href="#">политики конфиденциальности</a></div>
-                </div>
-                <div class="aqf-form__manager">
-                        <div class="afq-manager">
-                          <div class="afq-manager__photo"><span class="bgimage" style="background-image: url(../img/common/manager.jpg)"></span>
-                          </div>
-                          <div class="afq-manager__name">Иванов Павел</div>
-                          <div class="afq-manager__post">Менеджер</div>
-                        </div>
-                </div>
-              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </main>
     <footer>
     </footer>
-    <script src="js/main.js?v=1.52"></script>
-    <script src="js/vendor.js"></script>
+    <script src="js/main.min.js?v=1.52"></script>
+    <script src="js/vendor.min.js"></script>
   </body>
 </html>

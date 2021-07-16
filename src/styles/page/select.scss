@@ -2,7 +2,7 @@ $background: none;
 $select-color: #fff;
 $select-background: #212529;
 $select-width: 100%;
-$select-height: 67px;
+$select-height: rem(67);
 
 .select-hidden {
     display: none;
@@ -18,6 +18,10 @@ $select-height: 67px;
     color: $select-color;
     width: $select-width;
     height: $select-height;
+
+    @media screen and (max-width: $w1280) {
+        height: 45px;
+    }
 }
 
 .select-styled {
@@ -27,7 +31,7 @@ $select-height: 67px;
     bottom: 0;
     left: 0;
     background-color: #212529;
-    padding: 8px 25px;
+    padding: rem(8) rem(25);
     transition: all 0.2s ease-in;
     border: 1px solid #eee;
     display: flex;
@@ -37,6 +41,12 @@ $select-height: 67px;
     color: #737373;
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: $w1280) {
+        padding: rem(8) rem(20);
+        font-size: 13px;
+
+    }
 
     & span {
         white-space: nowrap;
@@ -86,6 +96,18 @@ $select-height: 67px;
     max-height: 300px;
     overflow: auto;
 
+    @media screen and (max-width: $w940) {
+        max-height: 30vh;
+    }
+
+    @media screen and (max-width: $w480) {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        max-height: 100vh;
+        margin: auto;
+    }
+
 
 
     li {
@@ -93,6 +115,16 @@ $select-height: 67px;
         padding: 0.75rem rem(15);
         border-top: 1px solid darken($select-background, 10);
         transition: all 0.15s ease-in;
+        font-size: 14px;
+
+        @media screen and (max-width: $w1280) {
+            font-size: 13px;
+        }
+
+        @media screen and (max-width: $w480) {
+            font-size: 16px;
+            padding: 1.5em 1.5em;
+        }
 
         &.active,
         &:hover {
@@ -103,5 +135,119 @@ $select-height: 67px;
         &[rel="hide"] {
             display: none;
         }
+    }
+}
+
+
+.loading {
+    width: 100%;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    height: 2px;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: -2px;
+    display: none;
+}
+
+.loading.load {
+    display: flex;
+}
+
+.loading .indeterminate {
+    background-color: $main
+}
+
+.loading .indeterminate:before {
+    -webkit-animation: indeterminate 2.1s cubic-bezier(.65, .815, .735, .395) infinite;
+    animation: indeterminate 2.1s cubic-bezier(.65, .815, .735, .395) infinite
+}
+
+.loading .indeterminate:after,
+.loading .indeterminate:before {
+    content: "";
+    position: absolute;
+    background-color: inherit;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    will-change: left, right
+}
+
+.loading .indeterminate:after {
+    -webkit-animation: indeterminate-short 2.1s cubic-bezier(.165, .84, .44, 1) infinite;
+    animation: indeterminate-short 2.1s cubic-bezier(.165, .84, .44, 1) infinite;
+    -webkit-animation-delay: 1.15s;
+    animation-delay: 1.15s
+}
+
+@-webkit-keyframes indeterminate {
+    0% {
+        left: -35%;
+        right: 100%
+    }
+
+    60% {
+        left: 100%;
+        right: -90%
+    }
+
+    to {
+        left: 100%;
+        right: -90%
+    }
+}
+
+@keyframes indeterminate {
+    0% {
+        left: -35%;
+        right: 100%
+    }
+
+    60% {
+        left: 100%;
+        right: -90%
+    }
+
+    to {
+        left: 100%;
+        right: -90%
+    }
+}
+
+@-webkit-keyframes indeterminate-short {
+    0% {
+        left: -200%;
+        right: 100%
+    }
+
+    60% {
+        left: 107%;
+        right: -8%
+    }
+
+    to {
+        left: 107%;
+        right: -8%
+    }
+}
+
+@keyframes indeterminate-short {
+    0% {
+        left: -200%;
+        right: 100%
+    }
+
+    60% {
+        left: 107%;
+        right: -8%
+    }
+
+    to {
+        left: 107%;
+        right: -8%
     }
 }
